@@ -13,7 +13,7 @@ import com.tax.sprintreport.entity.FormUIEntityKey;
 @Repository
 public interface FormUIRepository extends JpaRepository<FormUIEntity, FormUIEntityKey>{
  
-	@Query(value="SELECT work_desc FROM sprintreport.r_form_ui WHERE active_ind='Y'", nativeQuery=true)
+	@Query(value="SELECT * FROM sprintreport.r_form_ui WHERE active_ind='Y'", nativeQuery=true)
 	List<FormUIEntity> getSprintReportForm();
 	
 
