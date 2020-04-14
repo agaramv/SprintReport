@@ -38,7 +38,7 @@ public class PersistenceConfiguration {
 	public LocalContainerEntityManagerFactoryBean entityManager() {
 		final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(dataSource());
-		em.setPackagesToScan("com.drhs.wc");
+		em.setPackagesToScan("com.tax.sprintreport");
 
 		final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		em.setJpaVendorAdapter(vendorAdapter);
