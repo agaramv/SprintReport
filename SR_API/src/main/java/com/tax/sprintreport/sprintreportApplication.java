@@ -3,7 +3,6 @@ package com.tax.sprintreport;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.tax.sprintreport.entity.FormUIEntity;
 
 @SpringBootApplication
 public class sprintreportApplication {

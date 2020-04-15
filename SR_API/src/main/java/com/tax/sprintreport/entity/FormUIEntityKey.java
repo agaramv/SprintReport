@@ -8,7 +8,11 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class FormUIEntityKey implements Serializable{
 
-	private static final long serialVersioUID = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 
 	@Column(name="version_num")
 	int versionNum;
@@ -45,7 +49,7 @@ public class FormUIEntityKey implements Serializable{
 	}
 
 	public static long getSerialversiouid() {
-		return serialVersioUID;
+		return serialVersionUID;
 	}
 	
 }
