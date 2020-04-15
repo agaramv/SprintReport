@@ -20,8 +20,6 @@ public class FormUIEntityKey implements Serializable{
 		super();
 	}
 
-	
-
 	public FormUIEntityKey(int versionNum, int lineNum) {
 		super();
 		this.versionNum = versionNum;

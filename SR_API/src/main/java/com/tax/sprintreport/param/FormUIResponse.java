@@ -1,67 +1,32 @@
-/**
- * 
- */
-package com.tax.sprintreport.entity;
+package com.tax.sprintreport.param;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+public class FormUIResponse {
 
-@Entity
-@Table(name="r_form_ui")
-public class FormUIEntity {
-	
-	@EmbeddedId
-	FormUIEntityKey formUiEntityKey;  
-	
-	@Column(name="active_ind")
-	private String activeInd; 
-	
-	@Column(name="work_code")
-	private String workCode; 
-	
-	@Column(name="work_desc")
-	private String workDesc; 
-	
-	@Column(name="info_type")
-	private String infoType; 
-	
-	@Column(name="support_ind")
+	private long versionNum; 
+	private long lineNum;
+	private String activeInd;
+	private String workCode;
+	private String workDesc;
+	private	String infoType;
 	private String supportInd;
-	
-	@Column(name="value_ind")
 	private String valueInd;
-	
-	@Column(name="new_value_ind")
 	private String newValueInd;
-	
-	@Column(name="run_ind")
 	private String runInd;
-	
-	@Column(name="grow_ind")
 	private String growInd;
-	
-	@Column(name="transform_ind")
 	private String transformInd;
 	
-	@Column(name="create_date")
-	private LocalDateTime createDate;
-	
-	@Column(name="last_upd_date")
-	private LocalDateTime lastUpdDate;
-	
-	public FormUIEntity() {
-		super();
+	public FormUIResponse() {
+		// TODO Auto-generated constructor stub
 	}
 
-	public FormUIEntity(FormUIEntityKey formUiEntityKey, String activeInd, String workCode, String workDesc,
+	public FormUIResponse(long versionNum, long lineNum, String activeInd, String workCode, String workDesc,
 			String infoType, String supportInd, String valueInd, String newValueInd, String runInd, String growInd,
-			String transformInd, LocalDateTime createDate, LocalDateTime lastUpdDate) {
+			String transformInd) {
 		super();
-		this.formUiEntityKey = formUiEntityKey;
+		this.versionNum = versionNum;
+		this.lineNum = lineNum;
 		this.activeInd = activeInd;
 		this.workCode = workCode;
 		this.workDesc = workDesc;
@@ -72,16 +37,23 @@ public class FormUIEntity {
 		this.runInd = runInd;
 		this.growInd = growInd;
 		this.transformInd = transformInd;
-		this.createDate = createDate;
-		this.lastUpdDate = lastUpdDate;
+
 	}
 
-	public FormUIEntityKey getFormUiEntityKey() {
-		return formUiEntityKey;
+	public long getVersionNum() {
+		return versionNum;
 	}
 
-	public void setFormUiEntityKey(FormUIEntityKey formUiEntityKey) {
-		this.formUiEntityKey = formUiEntityKey;
+	public void setVersionNum(long versionNum) {
+		this.versionNum = versionNum;
+	}
+
+	public long getLineNum() {
+		return lineNum;
+	}
+
+	public void setLineNum(long lineNum) {
+		this.lineNum = lineNum;
 	}
 
 	public String getActiveInd() {
@@ -164,21 +136,4 @@ public class FormUIEntity {
 		this.transformInd = transformInd;
 	}
 
-	public LocalDateTime getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(LocalDateTime createDate) {
-		this.createDate = createDate;
-	}
-
-	public LocalDateTime getLastUpdDate() {
-		return lastUpdDate;
-	}
-
-	public void setLastUpdDate(LocalDateTime lastUpdDate) {
-		this.lastUpdDate = lastUpdDate;
-	}
-
-		
 }
