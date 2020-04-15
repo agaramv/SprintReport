@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tax.sprintreport.entity.FormUIEntity;
+import com.tax.sprintreport.param.FormUIResponse;
 import com.tax.sprintreport.service.FormUIService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -18,7 +19,7 @@ public class FormUIController {
 	FormUIService formUiService;
 
 	@GetMapping("/sprintreport/form")
-	public List<FormUIEntity> getSprintReportForm(){
+	public List<FormUIResponse> getSprintReportForm(){
 		return formUiService.getSprintReportForm();
 	}
 
