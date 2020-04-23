@@ -10,14 +10,17 @@
       <form [formGroup]="report" (ngSubmit)="onSubmit()">
         <div *ngFor="let elem of formTemplate">
         <div [ngSwitch]="elem.type">
-          <div *ngSwitchCase="'textBox'">
-            <input type="text" formControlName="{{elem.label}}" id="{{elem.label}}">
+          <div *ngSwitchCase="'textBox'" class="form-group">
+            <label>{{elem.label}}</label>
+            <input type="text" formControlName="{{elem.label}}" id="{{elem.label}}" class="form-control">
           </div>
-          <div *ngSwitchCase="'number'">
-            <input type="number" formControlName="{{elem.label}}" id="{{elem.label}}">
+          <div *ngSwitchCase="'number'" class="form-group">
+            <label>{{elem.label}}</label>
+            <input type="number" formControlName="{{elem.label}}" id="{{elem.label}}" class="form-control">
           </div>
-          <div *ngSwitchCase="'select'">
-            <select formControlName="{{elem.label}}" id="{{elem.label}}">
+          <div *ngSwitchCase="'select'" class="form-group">
+            <label>{{elem.label}}</label>
+            <select formControlName="{{elem.label}}" id="{{elem.label}}" class="form-control">
               <option *ngFor="let opt of elem.options">{{opt}}</option>
             </select>
           </div>
