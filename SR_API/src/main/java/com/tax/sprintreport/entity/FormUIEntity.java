@@ -57,6 +57,7 @@ public class FormUIEntity {
 		super();
 	}
 
+
 	public FormUIEntity(FormUIEntityKey formUiEntityKey, String activeInd, String workCode, String workDesc,
 			String infoType, String supportInd, String valueInd, String newValueInd, String runInd, String growInd,
 			String transformInd, LocalDateTime createDate, LocalDateTime lastUpdDate) {
@@ -76,6 +77,8 @@ public class FormUIEntity {
 		this.lastUpdDate = lastUpdDate;
 	}
 
+
+
 	public FormUIEntityKey getFormUiEntityKey() {
 		return formUiEntityKey;
 	}
@@ -88,17 +91,21 @@ public class FormUIEntity {
 		return activeInd;
 	}
 
+
 	public void setActiveInd(String activeInd) {
 		this.activeInd = activeInd;
 	}
+
 
 	public String getWorkCode() {
 		return workCode;
 	}
 
+
 	public void setWorkCode(String workCode) {
 		this.workCode = workCode;
 	}
+
 
 	public String getWorkDesc() {
 		return workDesc;
