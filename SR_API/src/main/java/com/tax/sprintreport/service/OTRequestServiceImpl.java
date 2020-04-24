@@ -23,4 +23,9 @@ public class OTRequestServiceImpl implements OTRequestService{
 		return otRequestDao.getOTRequestsAll();
 	}
 
+	@Override
+	public OTRequestEntity addOTRequest(OTRequestEntity otRequestEntity) {
+		return otRequestDao.addOTRequest(otRequestEntity);
+	}
+
 }

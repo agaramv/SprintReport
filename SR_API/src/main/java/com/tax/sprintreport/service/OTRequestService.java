@@ -8,4 +8,7 @@ public interface OTRequestService {
 
 	//Get OT Requests that are Active
 	public List<OTRequestEntity> getOTRequestsAll();
+	
+	//Add ot request
+	public OTRequestEntity addOTRequest(OTRequestEntity otRequestEntity);
 }

@@ -15,7 +15,6 @@ public class ReasonsServiceImpl implements ReasonsService{
 
 	@Override
 	public List<ReasonsEntity> getReasons() {
-		System.out.println(reasonsService.getReasons());
 		return reasonsService.getReasons();
 	}
 

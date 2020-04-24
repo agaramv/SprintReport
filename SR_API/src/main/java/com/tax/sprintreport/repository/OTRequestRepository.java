@@ -13,4 +13,5 @@ public interface OTRequestRepository extends JpaRepository<OTRequestEntity, Stri
 
 	@Query(value="SELECT * FROM sprintreport.r_ot_request WHERE status='A'", nativeQuery=true)
 	List<OTRequestEntity> getOTRequestsAll();
+	
 }

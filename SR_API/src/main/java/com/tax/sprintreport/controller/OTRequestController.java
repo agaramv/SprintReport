@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tax.sprintreport.entity.OTRequestEntity;
@@ -17,9 +19,20 @@ public class OTRequestController {
 	@Autowired
 	OTRequestService otRequestService;
 	
+	//********************
+	// Get Active Requests
+	//********************	
 	@GetMapping("/otrequests/all")
 	public List<OTRequestEntity> getOTRequestsAll(){
 		return otRequestService.getOTRequestsAll();
+	}
+	
+	//********************
+	// Add Request
+	//*******************
+	@PostMapping("/otrequests/add")
+	public OTRequestEntity addOTRequest(@RequestBody OTRequestEntity otRequestEntity) {
+		return otRequestService.addOTRequest(otRequestEntity);
 	}
 
 }

@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class OTRequestEntity {
 
 	@Id
-	Integer entry_id;
+	long entry_id;
 	
 	@Column(name="category")
 	private String category;
@@ -31,7 +31,7 @@ public class OTRequestEntity {
 		// TODO Auto-generated constructor stub
 	}
 
-	public OTRequestEntity(Integer entry_id, String category, String req_id, String req_desc, String outcome,
+	public OTRequestEntity(long entry_id, String category, String req_id, String req_desc, String outcome,
 			String status) {
 		super();
 		this.entry_id = entry_id;
@@ -42,11 +42,11 @@ public class OTRequestEntity {
 		this.status = status;
 	}
 
-	public Integer getEntry_id() {
+	public long getEntry_id() {
 		return entry_id;
 	}
 
-	public void setEntry_id(Integer entry_id) {
+	public void setEntry_id(long entry_id) {
 		this.entry_id = entry_id;
 	}
 

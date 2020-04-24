@@ -9,4 +9,7 @@ public interface OTRequestDao {
 	//Get All OT Requests that are Active
 	public List<OTRequestEntity> getOTRequestsAll();
 	
+	//Add OT Request
+	public OTRequestEntity addOTRequest(OTRequestEntity otRequestEntity);
+	
 }

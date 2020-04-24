@@ -13,7 +13,7 @@ import com.tax.sprintreport.repository.OTRequestRepository;
 public class OTRequestDaoImpl implements OTRequestDao{
 
 	@Autowired
-	private OTRequestRepository otRequestRespository;
+	private OTRequestRepository otRequestRepo;
 	
 	public OTRequestDaoImpl() {
 		
@@ -21,7 +21,13 @@ public class OTRequestDaoImpl implements OTRequestDao{
 	
 	@Override
 	public List<OTRequestEntity> getOTRequestsAll(){
-		return otRequestRespository.getOTRequestsAll();
+		return otRequestRepo.getOTRequestsAll();
+	}
+
+	@Override
+	public OTRequestEntity addOTRequest(OTRequestEntity otRequestEntity) {
+		OTRequestEntity newEntity = otRequestRepo.saveAndFlush(otRequestEntity);
+		return newEntity;
 	}
 
 }
