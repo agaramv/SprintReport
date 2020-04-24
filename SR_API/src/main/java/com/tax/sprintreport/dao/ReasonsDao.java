@@ -8,4 +8,7 @@ public interface ReasonsDao {
 
 	//Get All Current Reasons
 	List<ReasonsEntity> getReasons();
+	
+	//Add Reason
+	ReasonsEntity addReason(ReasonsEntity reasonsEntity);
 }

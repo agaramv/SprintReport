@@ -5,17 +5,23 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tax.sprintreport.dao.ReasonsDao;
 import com.tax.sprintreport.entity.ReasonsEntity;
 
 @Service
 public class ReasonsServiceImpl implements ReasonsService{
 
 	@Autowired
-	ReasonsService reasonsService;
+	ReasonsDao reasonsDao;
 
 	@Override
 	public List<ReasonsEntity> getReasons() {
-		return reasonsService.getReasons();
+		return reasonsDao.getReasons();
+	}
+
+	@Override
+	public ReasonsEntity addReason(ReasonsEntity reasonsEntity) {
+		return reasonsDao.addReason(reasonsEntity);
 	}
 
 }

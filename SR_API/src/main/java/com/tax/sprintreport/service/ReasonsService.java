@@ -8,4 +8,7 @@ public interface ReasonsService {
 
 	//Get current Reasons
 	List<ReasonsEntity> getReasons();
+	
+	//Add reason
+	ReasonsEntity addReason(ReasonsEntity reasonsEntity);
 }
