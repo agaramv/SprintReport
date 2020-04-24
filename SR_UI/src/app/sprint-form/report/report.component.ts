@@ -8,34 +8,17 @@ import { NgForm, FormControl, FormGroup } from '@angular/forms';
 })
 export class ReportComponent implements OnInit {
   submitted:boolean = false;
-  report:FormGroup
+  otr = new FormControl();
+  otrList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  itr = new FormControl();
+  itrList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
   constructor() { }
-  formTemplate = [
-    {
-      "type":"textBox",
-      "label":"Name",
-    },
-    {
-      "type":"number",
-      "label":"Age"
-    },
-    {
-      "type":"select",
-      "label":"favorite book",
-      "options":["Jane Eyre","Pride and Prejudice","Wuthering Heights"]
-    }
-  ]
-
   ngOnInit(): void {
-    let group={}
-    this.formTemplate.forEach(inputTemplate=>{
-      group[inputTemplate.label]=new FormControl('');
-    })
-    this.report=new FormGroup(group)
+
   }
 
   //Captures the form data
-  onSubmit() {
-    console.log(this.report.value)
+  onSubmit(report:NgForm) {
+    console.log(report.value)
   }
 }
