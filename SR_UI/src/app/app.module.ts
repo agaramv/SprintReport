@@ -9,6 +9,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { SprintFormComponent } from './sprint-form/sprint-form.component';
 import { ReportComponent } from './sprint-form/report/report.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
