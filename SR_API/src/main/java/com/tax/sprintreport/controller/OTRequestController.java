@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tax.sprintreport.entity.OTRequestEntity;
+import com.tax.sprintreport.param.OTRequestResponse;
 import com.tax.sprintreport.service.OTRequestService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -23,7 +24,7 @@ public class OTRequestController {
 	// Get Active Requests
 	//********************	
 	@GetMapping("/otrequest/all")
-	public List<OTRequestEntity> getOTRequestsAll(){
+	public List<OTRequestResponse> getOTRequestsAll(){
 		return otRequestService.getOTRequestsAll();
 	}
 	

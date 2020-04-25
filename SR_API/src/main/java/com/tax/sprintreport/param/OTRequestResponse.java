@@ -6,7 +6,7 @@ public class OTRequestResponse {
 	
 	private String Category;
 	private String request_id; 
-	private String req_desc;
+	private String request_desc;
 	private String outcome;
 	private String status;
 	
@@ -17,15 +17,13 @@ public class OTRequestResponse {
 	}
 
 
-	public OTRequestResponse(String category, String request_id, String req_desc, String outcome, String status) {
+	public OTRequestResponse(String category, String request_id, String request_desc, String outcome, String status) {
 		super();
 		Category = category;
 		this.request_id = request_id;
-		this.req_desc = req_desc;
+		this.request_desc = request_desc;
 		this.outcome = outcome;
 		this.status = status;
-		
-		
 	}
 
 
@@ -49,13 +47,13 @@ public class OTRequestResponse {
 	}
 
 
-	public String getReq_desc() {
-		return req_desc;
+	public String getRequest_desc() {
+		return request_desc;
 	}
 
 
-	public void setReq_desc(String req_desc) {
-		this.req_desc = req_desc;
+	public void setRequest_desc(String request_desc) {
+		this.request_desc = request_desc;
 	}
 
 
@@ -77,7 +75,6 @@ public class OTRequestResponse {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	
+
 	
 }

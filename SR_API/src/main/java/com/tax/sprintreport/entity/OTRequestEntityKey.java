@@ -42,8 +42,4 @@ public class OTRequestEntityKey implements Serializable {
 		this.requestID = requestID;
 	}
 
-
-
-    
-
 }

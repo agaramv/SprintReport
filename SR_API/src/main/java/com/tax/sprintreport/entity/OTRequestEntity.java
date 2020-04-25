@@ -11,10 +11,10 @@ public class OTRequestEntity {
 
 		
 	@EmbeddedId
-	OTRequestEntityKey OTRequestKey;
+	OTRequestEntityKey OTRequestEntityKey;
 	
 	@Column(name="request_desc")
-	private String req_desc;
+	private String requestDesc;
 	
 	@Column(name="outcome")
 	private String outcome;
@@ -27,56 +27,50 @@ public class OTRequestEntity {
 	}
 
 	
-	public OTRequestEntity(OTRequestEntityKey oTRequestKey, String req_desc, String outcome, String status) {
+
+	public OTRequestEntity(com.tax.sprintreport.entity.OTRequestEntityKey oTRequestEntityKey, String requestDesc,
+			String outcome, String status) {
 		super();
-		OTRequestKey = oTRequestKey;
-		this.req_desc = req_desc;
+		OTRequestEntityKey = oTRequestEntityKey;
+		this.requestDesc = requestDesc;
 		this.outcome = outcome;
 		this.status = status;
 	}
 
 
-	public OTRequestEntityKey getOTRequestKey() {
-		return OTRequestKey;
-	}
 
+	public OTRequestEntityKey getOTRequestEntityKey() {
+		return OTRequestEntityKey;
+	}
 
 	public void setOTRequestKey(OTRequestEntityKey oTRequestKey) {
-		OTRequestKey = oTRequestKey;
+		OTRequestEntityKey = oTRequestKey;
 	}
 
-
-	public String getReq_desc() {
-		return req_desc;
+	public String getRequestDesc() {
+		return requestDesc;
 	}
 
-
-	public void setReq_desc(String req_desc) {
-		this.req_desc = req_desc;
+	public void setRequestDesc(String requestDesc) {
+		this.requestDesc = requestDesc;
 	}
-
 
 	public String getOutcome() {
 		return outcome;
 	}
 
-
 	public void setOutcome(String outcome) {
 		this.outcome = outcome;
 	}
-
 
 	public String getStatus() {
 		return status;
 	}
 
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-
-		
 	
 
-}
+	}
+
