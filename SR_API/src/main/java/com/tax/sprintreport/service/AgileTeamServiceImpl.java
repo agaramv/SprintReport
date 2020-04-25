@@ -20,4 +20,9 @@ public class AgileTeamServiceImpl implements AgileTeamService{
 		return agileTeamDao.getAgileTeams();
 	}
 
+	@Override
+	public AgileTeamEntity addAgileTeam(AgileTeamEntity agileTeamEntity) {
+		return agileTeamDao.addAgileTeam(agileTeamEntity);
+	}
+
 }

@@ -7,4 +7,7 @@ import com.tax.sprintreport.entity.AgileTeamEntity;
 public interface AgileTeamService {
 
 	List<AgileTeamEntity> getAgileTeams();
+	
+	AgileTeamEntity addAgileTeam(AgileTeamEntity agileTeamEntity);
+
 }

@@ -23,4 +23,10 @@ public class AgileTeamDaoImpl implements AgileTeamDao{
 		return agileTeamRepo.findAll();
 	}
 
+	@Override
+	public AgileTeamEntity addAgileTeam(AgileTeamEntity agileTeamEntity) {
+		AgileTeamEntity newEntity = agileTeamRepo.saveAndFlush(agileTeamEntity);
+		return newEntity;
+	}
+
 }
