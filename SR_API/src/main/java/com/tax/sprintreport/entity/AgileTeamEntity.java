@@ -10,7 +10,6 @@ import javax.persistence.Table;
 @Table(name="r_agile_team")
 public class AgileTeamEntity {
 
-	@GeneratedValue
 	@Id
 	private String team_id;
 	
