@@ -1,0 +1,219 @@
+<br>
+<div class="justify-content-center">
+  <mat-card id="sprintReport">
+    <mat-card-header>
+      <mat-card-title>
+        Sprint Report
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)" id="form">
+        <div class="col form-inline">
+          <mat-form-field>
+            <mat-label>Sprint Start</mat-label>
+            <input matInput type="text" placeholder="#">
+          </mat-form-field>
+          <label class="mx-3">To</label>
+          <mat-form-field>
+            <mat-label>Sprint End</mat-label>
+            <input matInput type="text" placeholder="#">
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Team</mat-label>
+            <mat-select>
+              <mat-option value="9">9</mat-option>
+              <mat-option value="9">9</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div> 
+        <div class="col">
+          <mat-tab-group>
+            <mat-tab label="First" class="container">
+              <!-- Orginial Bugs PBIs -->
+              <div class="row justify-content-between">
+                <div class="col-4 align-self-center">
+                  <mat-label>Orginally Planned PBIs</mat-label>
+                </div>
+                <div class="col-8">
+                  <div class="row justify-content-end">
+                    <div class="col">
+                      <mat-form-field>
+                        <mat-label>Completed</mat-label>
+                        <input matInput type="text" placeholder="">
+                      </mat-form-field>                
+                    </div>
+                    <div class="col">
+                      <mat-form-field>
+                        <mat-label>Not Completed</mat-label>
+                        <input matInput type="text" placeholder="">
+                      </mat-form-field>                
+                    </div>
+                    <div class="col">
+                      <mat-label>Completion Percentage</mat-label>
+                      <p>Some Number</p>                
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-content-between">
+                <div class="col-4 align-self-center">
+                  <mat-label>Orginally Planned Bugs</mat-label>
+                </div>
+                <div class="col">
+                  <div class="row justify-content-end">
+                    <div class="col">
+                      <mat-form-field>
+                        <mat-label>Completed</mat-label>
+                        <input matInput type="text" placeholder="">
+                      </mat-form-field>                
+                    </div>
+                    <div class="col">
+                      <mat-form-field>
+                        <mat-label>Not Completed</mat-label>
+                        <input matInput type="text" placeholder="">
+                      </mat-form-field>                
+                    </div>
+                    <div class="col">
+                      <mat-label>Completion Percentage</mat-label>
+                      <p>Some Number</p>                
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <!-- Additional Bugs and PBIs -->
+              <div class="row justify-content-between">
+                <div class="col-4 align-self-center">
+                  <mat-label>Additional PBIs</mat-label>
+                </div>
+                <div class="col-8">
+                  <div class="row justify-content-end">
+                    <div class="col">
+                      <mat-form-field>
+                        <mat-label>Completed</mat-label>
+                        <input matInput type="text" placeholder="">
+                      </mat-form-field>                
+                    </div>
+                    <div class="col">
+                      <mat-form-field>
+                        <mat-label>Not Completed</mat-label>
+                        <input matInput type="text" placeholder="">
+                      </mat-form-field>                
+                    </div>
+                    <div class="col">
+                      <mat-label>Completion Percentage</mat-label>
+                      <p>Some Number</p>                
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-content-between">
+                <div class="col-4 align-self-center">
+                  <mat-label>Additional Bugs</mat-label>
+                </div>
+                <div class="col">
+                  <div class="row justify-content-end">
+                    <div class="col">
+                      <mat-form-field>
+                        <mat-label>Completed</mat-label>
+                        <input matInput type="text" placeholder="">
+                      </mat-form-field>                
+                    </div>
+                    <div class="col">
+                      <mat-form-field>
+                        <mat-label>Not Completed</mat-label>
+                        <input matInput type="text" placeholder="">
+                      </mat-form-field>                
+                    </div>
+                    <div class="col">
+                      <mat-label>Completion Percentage</mat-label>
+                      <p>Some Number</p>                
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr>
+              <!-- Reasons Section -->
+              <div class="row">
+                <div class="col-8">
+                  <h4>Reasons For Not Completing</h4>
+                </div>
+                <!-- Sprint Hours Categories -->
+                <div class="col-4">
+                  <h4>Sprint Hour Dissection</h4>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab label="OTR/ITR"> 
+              <br>
+              <div class="container">
+                <div class="row justify-content-around">
+                  <div class="col-4">
+                    <p>OTR</p>
+                    <hr>
+                    <!-- <mat-divider></mat-divider> -->
+                    <mat-form-field>
+                      <mat-label>OTRs</mat-label>
+                      <mat-select [formControl]="otr" multiple>
+                        <mat-select-trigger>
+                          {{otr.value ? otr.value[0] : ''}}
+                          <span *ngIf="otr.value?.length > 1" class="plus1Selection">
+                            (+{{otr.value.length - 1}} {{otr.value?.length === 2 ? 'other' : 'others'}})
+                          </span>
+                        </mat-select-trigger>
+                        <mat-option *ngFor="let otr of otrList" [value]="otr">{{otr}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <p>OTRs Selected:</p>
+                    <!-- Create a chip list of the otrs selected -->
+                  </div>
+                  <div class="col-4">
+                    <p>ITR</p>
+                    <hr>
+                    <mat-form-field>
+                      <mat-label>ITRs</mat-label>
+                      <mat-select [formControl]="itr" multiple>
+                        <mat-select-trigger>
+                          {{itr.value ? itr.value[0] : ''}}
+                          <span *ngIf="itr.value?.length > 1" class="plus1Selection">
+                            (+{{itr.value.length - 1}} {{itr.value?.length === 2 ? 'other' : 'others'}})
+                          </span>
+                        </mat-select-trigger>
+                        <mat-option *ngFor="let itr of itrList" [value]="itr">{{itr}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <p>OTRs Selected:</p>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+          </mat-tab-group> 
+        </div>        
+        <br>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+    </mat-card-content>
+  </mat-card><br>
+</div>
+<br>
+<!-- Dyanmic Form -->
+<!-- <div *ngFor="let elem of formTemplate">
+  <div [ngSwitch]="elem.type">
+    <div *ngSwitchCase="'textBox'" class="form-group">
+      <label>{{elem.label}}</label>
+      <input type="text" formControlName="{{elem.label}}" id="{{elem.label}}" class="form-control">
+    </div>
+    <div *ngSwitchCase="'number'" class="form-group">
+      <label>{{elem.label}}</label>
+      <input type="number" formControlName="{{elem.label}}" id="{{elem.label}}" class="form-control">
+    </div>
+    <div *ngSwitchCase="'select'" class="form-group">
+      <label>{{elem.label}}</label>
+      <select formControlName="{{elem.label}}" id="{{elem.label}}" class="form-control">
+        <option *ngFor="let opt of elem.options">{{opt}}</option>
+      </select>
+    </div>
+  </div>
+  </div> -->

@@ -7,18 +7,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { NavigationComponent } from './navigation/navigation.component';
 import { SprintFormComponent } from './sprint-form/sprint-form.component';
+import { ReportComponent } from './sprint-form/report/report.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    SprintFormComponent
+    SprintFormComponent,
+    ReportComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
