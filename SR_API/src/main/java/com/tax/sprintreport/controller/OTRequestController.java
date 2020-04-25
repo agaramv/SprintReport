@@ -22,7 +22,7 @@ public class OTRequestController {
 	//********************
 	// Get Active Requests
 	//********************	
-	@GetMapping("/otrequests/all")
+	@GetMapping("/otrequest/all")
 	public List<OTRequestEntity> getOTRequestsAll(){
 		return otRequestService.getOTRequestsAll();
 	}
@@ -30,7 +30,7 @@ public class OTRequestController {
 	//********************
 	// Add Request
 	//*******************
-	@PostMapping("/otrequests/add")
+	@PostMapping("/otrequest/add")
 	public OTRequestEntity addOTRequest(@RequestBody OTRequestEntity otRequestEntity) {
 		return otRequestService.addOTRequest(otRequestEntity);
 	}

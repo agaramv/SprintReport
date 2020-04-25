@@ -19,12 +19,12 @@ public class ReasonsController {
 	@Autowired
 	ReasonsService reasonsService;
 	
-	@GetMapping("/reasons/current")
+	@GetMapping("/reason/all")
 	public List<ReasonsEntity> getReasons() {
 		return reasonsService.getReasons();
 	}
 	
-	@PostMapping("/reasons/add")
+	@PostMapping("/reason/add")
 	public ReasonsEntity addReason(@RequestBody ReasonsEntity reasonsEntity) {
 		return reasonsService.addReason(reasonsEntity);
 	}
