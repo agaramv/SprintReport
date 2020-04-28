@@ -16,7 +16,7 @@ export class SprintFormService {
 
   //Gets teams from db
   getTeams(){
-    return this.http.get<any>(this.endpoint + '/team/all');
+    return this.http.get<any>(this.endpoint + '/agileteam/all');
   }
 
   //Gets reasons from db

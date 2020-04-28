@@ -23,8 +23,7 @@
           <mat-form-field>
             <mat-label>Team</mat-label>
             <mat-select>
-              <mat-option value="9">9</mat-option>
-              <mat-option value="9">9</mat-option>
+              <mat-option value="{{team.team_id}}" *ngFor="let team of teams">{{team.team_id}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div> 

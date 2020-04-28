@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm, FormControl, FormGroup } from '@angular/forms';
 import { SprintFormService } from '../sprint-form.service';
 import { Reason } from 'src/app/Models/reasons.model';
+import { Team } from 'src/app/Models/team.model';
 
 @Component({
   selector: 'app-report',
@@ -15,10 +16,12 @@ export class ReportComponent implements OnInit {
   itr = new FormControl();
   itrList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
   reasons:Reason[]
+  teams:Team[]
   
   constructor(private sprintFormService: SprintFormService) { }
   ngOnInit(): void {
     this.getReasons();
+    this.getTeams();
   }
 
   getReasons(){
@@ -30,11 +33,11 @@ export class ReportComponent implements OnInit {
   }
 
   getTeams(){
-    // this.sprintFormService.getReasons().subscribe((data: Reason[])=>{
-    //   console.log(data);
-    //   this.reasons = data;
-    //   console.log(this.reasons)
-    // })
+    this.sprintFormService.getTeams().subscribe((data: Team[])=>{
+      console.log(data);
+      this.teams = data;
+      console.log(this.teams)
+    })
   }
 
   //Captures the form data
