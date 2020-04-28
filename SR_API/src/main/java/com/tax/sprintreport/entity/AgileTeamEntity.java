@@ -36,7 +36,7 @@ public class AgileTeamEntity {
 		this.team_id = team_id;
 		this.team_desc = team_desc;
 		this.parent_team_id = parent_team_id;
-		Project_nd = project_nd;
+		this.Project_nd = project_nd;
 		this.scrum_master_email = scrum_master_email;
 	}
 

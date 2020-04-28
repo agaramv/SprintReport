@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tax.sprintreport.entity.AgileTeamEntity;
@@ -24,7 +25,7 @@ public class AgileTeamController {
 	}
 	
 	@PostMapping("/agileteam/add")
-	public AgileTeamEntity addAgileTeam(AgileTeamEntity agileTeamEntity) {
+	public AgileTeamEntity addAgileTeam(@RequestBody AgileTeamEntity agileTeamEntity) {
 		return agileTeamService.addAgileTeam(agileTeamEntity);
 	}
 }
