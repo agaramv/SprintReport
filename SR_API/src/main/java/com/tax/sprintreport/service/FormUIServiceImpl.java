@@ -23,7 +23,6 @@ public class FormUIServiceImpl implements FormUIService{
 		
 		List<FormUIResponse> FormUIResponse = new ArrayList<FormUIResponse>();
 		
-//	    FormUiResponse = FormUIEntity.
 		//Build a flat Json object to send to client (avoid sending composite json object to client)
 		FormUIResponse = formUiEntity.stream().map(
 				formUi -> new FormUIResponse(

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import com.tax.sprintreport.entity.SprintReportEntity;
+import com.tax.sprintreport.param.SprintReportResponse;
 import com.tax.sprintreport.service.SprintReportService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -30,7 +30,7 @@ public class SprintReportController {
 	 **************************************************/
 	
 	@GetMapping("/sprintreport/byteam/{teamID}/sprintnum/{sprintNum}")
-	public List<SprintReportEntity> getSprintReport(@PathVariable("teamID") String teamID, @PathVariable("sprintNum") int sprintNum ) {
+	public List<SprintReportResponse> getSprintReport(@PathVariable("teamID") String teamID, @PathVariable("sprintNum") int sprintNum ) {
 		return sprintReportService.getSprintReport(teamID,sprintNum);
 	}
 	
@@ -42,7 +42,7 @@ public class SprintReportController {
 	 *****************************************/
 
 	@GetMapping("/lastsprintreport/byteamID/{teamID}")
-	public List<SprintReportEntity> getLastSprintReportByTeamID(@PathVariable("teamID") String teamID) {
+	public List<SprintReportResponse> getLastSprintReportByTeamID(@PathVariable("teamID") String teamID) {
 		return sprintReportService.getLastSprintReportByTeamID(teamID);
 	
     }
