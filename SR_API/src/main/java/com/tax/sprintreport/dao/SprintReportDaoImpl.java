@@ -17,8 +17,8 @@ public class SprintReportDaoImpl implements SprintReportDao{
 	SprintReportRepository sprintReportRepo;
 	
 	@Override
-	public List<SprintReportEntity> getSprintReport() {
-		  return sprintReportRepo.getSprintReport();
+	public List<SprintReportEntity> getSprintReport(String teamID, int sprintNum) {
+		  return sprintReportRepo.getSprintReport(teamID, sprintNum);
 	
 	}
 

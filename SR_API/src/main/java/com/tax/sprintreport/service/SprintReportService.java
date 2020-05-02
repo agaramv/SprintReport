@@ -8,6 +8,6 @@ public interface SprintReportService {
 	
 	//Get Service by Team and Sprint Number 
 	
-	List<SprintReportEntity> getSprintReport();
+	List<SprintReportEntity> getSprintReport(String teamID, int sprintNum);
 
 }

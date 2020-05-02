@@ -7,6 +7,6 @@ import com.tax.sprintreport.entity.SprintReportEntity;
 public interface SprintReportDao {
 	
 	//Get Sprint Report by Team and Sprint Number 
-	List<SprintReportEntity> getSprintReport();
+	List<SprintReportEntity> getSprintReport(String teamID, int sprintNum);
 
 }

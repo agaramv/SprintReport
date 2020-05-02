@@ -15,9 +15,9 @@ public class SprintReportServiceImpl implements SprintReportService{
 	SprintReportDao sprintReportDao;
 	
 	@Override
-	public List<SprintReportEntity> getSprintReport() {
+	public List<SprintReportEntity> getSprintReport(String teamID, int sprintNum) {
 	
-		return sprintReportDao.getSprintReport();
+		return sprintReportDao.getSprintReport(teamID,sprintNum);
 		
 	}
 
