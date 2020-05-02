@@ -1,25 +1,24 @@
-package com.tax.sprintreport.dao;
+package com.tax.sprintreport.service;
 
 import java.util.List;
-
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tax.sprintreport.dao.SprintReportDao;
 import com.tax.sprintreport.entity.SprintReportEntity;
-import com.tax.sprintreport.repository.SprintReportRepository;
 
 @Service
-public class SprintReportDaoImpl implements SprintReportDao{
+public class SprintReportServiceImpl implements SprintReportService{
 
 	@Autowired
-	SprintReportRepository sprintReportRepo;
+	SprintReportDao sprintReportDao;
 	
 	@Override
 	public List<SprintReportEntity> getSprintReport() {
-		  return sprintReportRepo.getSprintReport();
 	
+		return sprintReportDao.getSprintReport();
+		
 	}
 
 }

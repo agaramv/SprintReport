@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @Table(name="sprint_report")
 public class SprintReportEntity {
 
-	
 	  @EmbeddedId
 	  private SprintReportEntityKey sprintReportEntitykey;
 	  @Column(name="sprint_start_date")
@@ -54,9 +53,9 @@ public class SprintReportEntity {
 	  private String growInd;
 	  @Column(name="sprint_capacity")
 	  private int sprintCapacity;
-	  @Column(name="")
-	  private int planned_capacity;
 	  @Column(name="planned_capacity")
+	  private int planned_capacity;
+	  @Column(name="actual_capacity")
 	  private int actualCapacity;
 	  @Column(name="estimated_hours")
 	  private int estimatedHours;

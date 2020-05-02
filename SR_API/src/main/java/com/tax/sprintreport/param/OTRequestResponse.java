@@ -1,7 +1,5 @@
 package com.tax.sprintreport.param;
 
-import javax.persistence.Column;
-
 public class OTRequestResponse {
 	
 	private String Category;

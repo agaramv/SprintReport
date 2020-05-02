@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tax.sprintreport.dao.OTRequestDao;
-import com.tax.sprintreport.entity.FormUIEntity;
 import com.tax.sprintreport.entity.OTRequestEntity;
 import com.tax.sprintreport.param.OTRequestResponse;
 
