@@ -16,8 +16,14 @@ public class SprintReportServiceImpl implements SprintReportService{
 	
 	@Override
 	public List<SprintReportEntity> getSprintReport(String teamID, int sprintNum) {
-	
 		return sprintReportDao.getSprintReport(teamID,sprintNum);
+		
+	}
+
+	@Override
+	public List<SprintReportEntity> getLastSprintReportByTeamID(String teamID) {
+		return sprintReportDao.getLastSprintReportByTeamID(teamID);
+
 		
 	}
 

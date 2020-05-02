@@ -21,8 +21,29 @@ public class SprintReportController {
 	@Autowired
 	SprintReportService sprintReportService;
 	
+	/*************************************************
+	 * Get Sprint Report by Team ID and Sprint Number
+	 * 
+	 * @param teamID
+	 * @param sprintNum
+	 * @return SprintReportEntity
+	 **************************************************/
+	
 	@GetMapping("/sprintreport/byteam/{teamID}/sprintnum/{sprintNum}")
 	public List<SprintReportEntity> getSprintReport(@PathVariable("teamID") String teamID, @PathVariable("sprintNum") int sprintNum ) {
 		return sprintReportService.getSprintReport(teamID,sprintNum);
 	}
+	
+	
+	/**************************************
+	 * Get Last Sprint Report by TeamID
+	 * @param teamID
+	 * @return SprintReportEntity
+	 *****************************************/
+
+	@GetMapping("/lastsprintreport/byteamID/{teamID}")
+	public List<SprintReportEntity> getLastSprintReportByTeamID(@PathVariable("teamID") String teamID) {
+		return sprintReportService.getLastSprintReportByTeamID(teamID);
+	
+    }
 }

@@ -22,4 +22,10 @@ public class SprintReportDaoImpl implements SprintReportDao{
 	
 	}
 
+	@Override
+	public List<SprintReportEntity> getLastSprintReportByTeamID(String teamID) {
+		return sprintReportRepo.getLastSprintReportByTeamID(teamID);
+		
+	}
+
 }
