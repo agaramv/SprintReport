@@ -26,7 +26,7 @@ public class SprintReportController {
 	 * 
 	 * @param teamID
 	 * @param sprintNum
-	 * @return SprintReportEntity
+	 * @return SprintReportResponse
 	 **************************************************/
 	
 	@GetMapping("/sprintreport/byteam/{teamID}/sprintnum/{sprintNum}")
@@ -38,7 +38,7 @@ public class SprintReportController {
 	/**************************************
 	 * Get Last Sprint Report by TeamID
 	 * @param teamID
-	 * @return SprintReportEntity
+	 * @return SprintReportReponse
 	 *****************************************/
 
 	@GetMapping("/lastsprintreport/byteamID/{teamID}")
