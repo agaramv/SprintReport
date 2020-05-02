@@ -39,6 +39,8 @@ export class ReportComponent implements OnInit {
     addPbiIncomp: [''],
     addBugComp: [''],
     addBugIncomp: [''],
+    otr: [],
+    itr: [],
     Forecast: [''],
     Capacity: [''],
     Estimated: [''],
@@ -73,10 +75,20 @@ export class ReportComponent implements OnInit {
     let form = JSON.stringify(this.sprintReport.value);
     //save form api
     console.log(this.sprintReport)
-    console.log(this.sprintReport.value.sprintStart.toDateString())
+    console.log(this.sprintReport.value.otr);
     // console.log(form)
-
   }
 
-   
+  get origPbiComp(): any {return this.sprintReport.get('origPbiComp')}
+  get origPbiIncomp(): any {return this.sprintReport.get('origPbiIncomp')}
+  get origBugComp(): any {return this.sprintReport.get('origBugComp')}
+  get origBugIncomp(): any {return this.sprintReport.get('origBugIncomp')}
+  get addPbiComp(): any {return this.sprintReport.get('addPbiComp')}
+  get addPbiIncomp(): any {return this.sprintReport.get('addPbiIncomp')}
+  get addBugComp(): any {return this.sprintReport.get('addBugComp')}
+  get addBugIncomp(): any {return this.sprintReport.get('addBugIncomp')}
+  get otrSelect() {return this.sprintReport.get('otr')}
+  get itrSelect() {return this.sprintReport.get('itr')}
+
+
 }

@@ -36,6 +36,7 @@
         <button type="submit" class="btn btn-primary">Save</button>
         <hr>
         <div class="container">
+          <!-- Section 1 -->
           <div class="row">
           <div class="col-8">
             <!-- Orginial PBIs -->
@@ -56,8 +57,8 @@
                 </mat-form-field>                
               </div>
               <div class="col-2">
-                <mat-label>%</mat-label><p>3</p>
-                <!-- <p>{{ (origPbiComp.value/(origPbiComp.value+origPbiIncomp.value)).toFixed(2) }}</p>                 -->
+                <mat-label>%</mat-label>
+                <p>{{ ((origPbiComp.value/(origPbiComp.value+origPbiIncomp.value))*100).toFixed(2) || 0}}</p>                
               </div>             
             </div>
             <!-- Orginal Bugs -->
@@ -79,7 +80,7 @@
               </div>
               <div class="col-2">
                 <mat-label>%</mat-label>
-                <p>Some </p>                
+                <p>{{ ((origBugComp.value/(origBugComp.value+origBugIncomp.value))*100).toFixed(2) || "0"}}</p>                
               </div>
             </div>
             <hr>
@@ -102,7 +103,7 @@
               </div>
               <div class="col-2">
                 <mat-label>Percentage</mat-label>
-                <p>Some </p>                
+                <p>{{ ((addPbiComp.value/(addPbiComp.value+addPbiIncomp.value))*100).toFixed(2) || "0" }}</p>                
               </div>
             </div>
             <!-- Additional Bugs  -->
@@ -124,7 +125,7 @@
               </div>
               <div class="col-2">
                 <mat-label>Percentage</mat-label>
-                <p>Some </p>                
+                <p>{{ ((addBugComp.value/(addBugComp.value+addBugIncomp.value))*100).toFixed(2) || "0" }}</p>                
               </div>
             </div>
           </div>
@@ -142,52 +143,55 @@
           </div>
           <hr>
           <!-- Section 2 -->
-          <div class="container row">
-            <!-- <div class="col-8"> -->
-              <div class="col-4">
-                <p>OTR</p>
-                <hr>
-                <!-- <mat-divider></mat-divider> -->
-                <mat-form-field>
-                  <mat-label>OTRs</mat-label>
-                  <mat-select  [formControl]="otr" multiple>
-                    <mat-select-trigger>
-                      {{otr.value ? otr.value[0] : ''}}
-                      <span *ngIf="otr.value?.length > 1" class="plus1Selection">
-                        (+{{otr.value.length - 1}} {{otr.value?.length === 2 ? 'other' : 'others'}})
-                      </span>
-                    </mat-select-trigger>
-                    <mat-option *ngFor="let otr of otrList" [value]="otr">{{otr}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <p>OTRs Selected: <span>
-                  <mat-chip-list>
-                    <mat-chip *ngFor="let otr of otrSelected">{{otr}}</mat-chip>
-                  </mat-chip-list>
-                </span></p>
-                <!-- Create a chip list of the otrs selected -->
-              </div>
-              <div class="col-4">
-                <p>ITR</p>
-                <hr>
-                <mat-form-field>
-                  <mat-label>ITRs</mat-label>
-                  <mat-select [formControl]="itr" multiple>
-                    <mat-select-trigger>
-                      {{itr.value ? itr.value[0] : ''}}
-                      <span *ngIf="itr.value?.length > 1" class="plus1Selection">
-                        (+{{itr.value.length - 1}} {{itr.value?.length === 2 ? 'other' : 'others'}})
-                      </span>
-                    </mat-select-trigger>
-                    <mat-option *ngFor="let itr of itrList" [value]="itr">{{itr}}</mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <p>OTRs Selected:</p>
-              </div>
-            
-            <!-- </div> -->
-            <!-- Sprint Hours Categories -->
+          <div class="container row justify-content-around">
+            <div class="col-4 ">
+              <p>OTR</p>
+              <hr>
+              <!-- <mat-divider></mat-divider> -->
+              <mat-form-field>
+                <mat-label>OTRs</mat-label>
+                <mat-select  formControlName="otr" multiple>
+                  <mat-select-trigger>
+                    {{otrSelect.value ? otrSelect.value[0] : ''}}
+                    <span *ngIf="otrSelect.value?.length > 1" class="plus1Selection">
+                      (+{{otrSelect.value.length - 1}} {{otrSelect.value?.length === 2 ? 'other' : 'others'}})
+                    </span>
+                  </mat-select-trigger>
+                  <mat-option *ngFor="let otr of otrList" [value]="otr">{{otr}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <p>OTRs Selected: <span>
+                <mat-chip-list>
+                  <mat-chip *ngFor="let otr of otrSelect.value">{{otr}}</mat-chip>
+                </mat-chip-list>
+              </span></p>              
+            </div>
             <div class="col-4">
+              <p>ITR</p>
+              <hr>
+              <mat-form-field>
+                <mat-label>ITRs</mat-label>
+                <mat-select formControlName="itr" multiple>
+                  <mat-select-trigger>
+                    {{itrSelect.value ? itrSelect.value[0] : ''}}
+                    <span *ngIf="itrSelect.value?.length > 1" class="plus1Selection">
+                      (+{{itrSelect.value.length - 1}} {{itrSelect.value?.length === 2 ? 'other' : 'others'}})
+                    </span>
+                  </mat-select-trigger>
+                  <mat-option *ngFor="let itr of itrList" [value]="itr">{{itr}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <p>ITRs Selected: <span>
+                <mat-chip-list>
+                  <mat-chip *ngFor="let itr of itrSelect.value">{{itr}}</mat-chip>
+                </mat-chip-list>
+              </span></p>
+            </div>   
+          </div>  
+          <hr>
+          <!-- Sprint Hours Categories -->
+          <div class="row">
+            <div class="col">
               <h4>Sprint Hour Dissection</h4>
               <table class="table">
                 <thead>
@@ -205,11 +209,10 @@
                     </td>
                   </tr>
                 </tbody>
-              </table>
+              </table>              
             </div>
-
-          </div>  
-        </div>        
+          </div>
+        </div>  <!--Container-->      
       </form>
     </mat-card-content>
   </mat-card><br>
