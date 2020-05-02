@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, FormControl, FormGroup } from '@angular/forms';
+import { NgForm, FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { SprintFormService } from '../sprint-form.service';
 import { Reason } from 'src/app/Models/reasons.model';
 import { Team } from 'src/app/Models/team.model';
@@ -27,9 +27,25 @@ export class ReportComponent implements OnInit {
   origBugPerc:number;
   addPbiPerc:number;
   addBugPerc:number;
-  sprintReport: any; //Object to take form
+  sprintReport = this.fb.group({
+    team: [''],
+    sprintStart: [''],
+    sprintEnd: [''],
+    origPbiComp: [''],
+    origPbiIncomp: [''],
+    origBugComp: [''],
+    origBugIncomp: [''],
+    addPbiComp: [''],
+    addPbiIncomp: [''],
+    addBugComp: [''],
+    addBugIncomp: [''],
+    Forecast: [''],
+    Capacity: [''],
+    Estimated: [''],
+    Completed: [''],
+  });
   
-  constructor(private sprintFormService: SprintFormService) { }
+  constructor(private sprintFormService: SprintFormService, private fb:FormBuilder) { }
   ngOnInit(): void {
     this.getReasons();
     this.getTeams();
@@ -52,10 +68,15 @@ export class ReportComponent implements OnInit {
   }
 
   //Captures the form data
-  onSubmit(report:NgForm) {
+  onSubmit() {
     //need to change the report.value.sprintEnd and Start to the data format we want
-    this.sprintReport = JSON.stringify(report.value);
+    let form = JSON.stringify(this.sprintReport.value);
+    //save form api
     console.log(this.sprintReport)
+    console.log(this.sprintReport.value.sprintStart.toDateString())
+    // console.log(form)
+
   }
 
+   
 }

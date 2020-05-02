@@ -13,7 +13,13 @@
     font-size: 0.75em;
   }
 
-.box {
-    display: flex;
-    flex-wrap: wrap;
+.completion{
+    width: 120px;
+}
+
+.reasons{
+    max-width: 100px;
+}
+.table {
+    height: 300px;
 }
