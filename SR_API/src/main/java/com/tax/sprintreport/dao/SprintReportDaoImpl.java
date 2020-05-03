@@ -26,4 +26,11 @@ public class SprintReportDaoImpl implements SprintReportDao{
 		
 	}
 
+	@Override
+	public SprintReportEntity newSprintReport(SprintReportEntity sprintReportEntity) {
+		
+		return sprintReportRepo.saveAndFlush(sprintReportEntity);
+	}
+
+	
 }

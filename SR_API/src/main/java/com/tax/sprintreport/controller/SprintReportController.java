@@ -6,11 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import com.tax.sprintreport.entity.SprintReportEntity;
 import com.tax.sprintreport.param.SprintReportResponse;
 import com.tax.sprintreport.service.SprintReportService;
 
@@ -46,4 +45,15 @@ public class SprintReportController {
 		return sprintReportService.getLastSprintReportByTeamID(teamID);
 	
     }
+	
+	
+	//********************
+	// New Sprint Report
+	//*******************
+	@PostMapping("/sprintreport/new")
+	public SprintReportEntity newSprintReport(@RequestBody SprintReportResponse sprintReportResponse){
+
+			return sprintReportService.newSprintReport(sprintReportResponse);
+		}
+	
 }

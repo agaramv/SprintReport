@@ -17,6 +17,8 @@ public class SprintReportEntity {
 	  private LocalDate sprintStartdate;
 	  @Column(name="sprint_End_date")
 	  private LocalDate sprintEnddate;
+	  @Column(name="scrum_master_email")
+	  private String scrumMasterEmail;
 	  @Column(name="planned_PBI_completed")
 	  private int planned_PBI_Completed;
 	  @Column(name="planned_PBI_not_completed")
@@ -66,22 +68,35 @@ public class SprintReportEntity {
 	  @Column(name="last_upd_Date")
 	  private LocalDateTime lastUpdDate;
 	  
-	  public SprintReportEntity() {
+
+	  
+	  
+	public SprintReportEntity() {
 		super();
-		// TODO Auto-generated constructor stub
-	  }
+	}
+	
+	
+
+	public String getScrumMasterEmail() {
+		return scrumMasterEmail;
+	}
+
+	public void setScrumMasterEmail(String scrumMasterEmail) {
+		this.scrumMasterEmail = scrumMasterEmail;
+	}
 
 	public SprintReportEntity(SprintReportEntityKey sprintReportEntitykey, LocalDate sprintStartdate,
-			LocalDate sprintEnddate, int planned_PBI_Completed, int planned_PBI_NotCompleted, int plannedBugCompleted,
-			int plannedBugNotCompleted, int addon_PBI_completed, int addonBugCompleted, String reason1, String reason2,
-			String reason3, String reason4, String reason5, String reasonOther, String supportInd, String valueInd,
-			String newValueInd, String runInd, String growInd, int sprintCapacity, int planned_capacity,
-			int actualCapacity, int estimatedHours, int completedHours, LocalDateTime createDate,
+			LocalDate sprintEnddate, String scrumMasterEmail, int planned_PBI_Completed, int planned_PBI_NotCompleted,
+			int plannedBugCompleted, int plannedBugNotCompleted, int addon_PBI_completed, int addonBugCompleted,
+			String reason1, String reason2, String reason3, String reason4, String reason5, String reasonOther,
+			String supportInd, String valueInd, String newValueInd, String runInd, String growInd, int sprintCapacity,
+			int planned_capacity, int actualCapacity, int estimatedHours, int completedHours, LocalDateTime createDate,
 			LocalDateTime lastUpdDate) {
 		super();
 		this.sprintReportEntitykey = sprintReportEntitykey;
 		this.sprintStartdate = sprintStartdate;
 		this.sprintEnddate = sprintEnddate;
+		this.scrumMasterEmail = scrumMasterEmail;
 		this.planned_PBI_Completed = planned_PBI_Completed;
 		this.planned_PBI_NotCompleted = planned_PBI_NotCompleted;
 		this.plannedBugCompleted = plannedBugCompleted;
@@ -106,9 +121,9 @@ public class SprintReportEntity {
 		this.completedHours = completedHours;
 		this.createDate = createDate;
 		this.lastUpdDate = lastUpdDate;
-		
-		
 	}
+
+
 
 	public SprintReportEntityKey getSprintReportEntitykey() {
 		return sprintReportEntitykey;

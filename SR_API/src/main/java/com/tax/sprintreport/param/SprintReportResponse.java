@@ -9,6 +9,7 @@ public class SprintReportResponse {
 	  private int sprintNum;
 	  private LocalDate sprintStartdate;
 	  private LocalDate sprintEnddate;
+	  private String scrumMasterEmail;
 	  private int planned_PBI_Completed;
 	  private int planned_PBI_NotCompleted;
 	  private int plannedBugCompleted;
@@ -40,42 +41,53 @@ public class SprintReportResponse {
 	  }
 
 
-	public SprintReportResponse(String teamID, int sprintNum, LocalDate sprintStartdate, LocalDate sprintEnddate,
-			int planned_PBI_Completed, int planned_PBI_NotCompleted, int plannedBugCompleted,
+		public SprintReportResponse(String teamID, int sprintNum, LocalDate sprintStartdate, LocalDate sprintEnddate,
+			String scrumMasterEmail, int planned_PBI_Completed, int planned_PBI_NotCompleted, int plannedBugCompleted,
 			int plannedBugNotCompleted, int addon_PBI_completed, int addonBugCompleted, String reason1, String reason2,
 			String reason3, String reason4, String reason5, String reasonOther, String supportInd, String valueInd,
 			String newValueInd, String runInd, String growInd, int sprintCapacity, int plannedCapacity,
 			int actualCapacity, int estimatedHours, int completedHours, LocalDateTime createDate,
 			LocalDateTime lastUpdDate) {
-			super();
-			this.teamID = teamID;
-			this.sprintNum = sprintNum;
-			this.sprintStartdate = sprintStartdate;
-			this.sprintEnddate = sprintEnddate;
-			this.planned_PBI_Completed = planned_PBI_Completed;
-			this.planned_PBI_NotCompleted = planned_PBI_NotCompleted;
-			this.plannedBugCompleted = plannedBugCompleted;
-			this.plannedBugNotCompleted = plannedBugNotCompleted;
-			this.addon_PBI_completed = addon_PBI_completed;
-			this.addonBugCompleted = addonBugCompleted;
-			this.reason1 = reason1;
-			this.reason2 = reason2;
-			this.reason3 = reason3;
-			this.reason4 = reason4;
-			this.reason5 = reason5;
-			this.reasonOther = reasonOther;
-			this.supportInd = supportInd;
-			this.valueInd = valueInd;
-			this.newValueInd = newValueInd;
-			this.runInd = runInd;
-			this.growInd = growInd;
-			this.sprintCapacity = sprintCapacity;
-			this.plannedCapacity = plannedCapacity;
-			this.actualCapacity = actualCapacity;
-			this.estimatedHours = estimatedHours;
-			this.completedHours = completedHours;
-			this.createDate = createDate;
-			this.lastUpdDate = lastUpdDate;
+		super();
+		this.teamID = teamID;
+		this.sprintNum = sprintNum;
+		this.sprintStartdate = sprintStartdate;
+		this.sprintEnddate = sprintEnddate;
+		this.scrumMasterEmail = scrumMasterEmail;
+		this.planned_PBI_Completed = planned_PBI_Completed;
+		this.planned_PBI_NotCompleted = planned_PBI_NotCompleted;
+		this.plannedBugCompleted = plannedBugCompleted;
+		this.plannedBugNotCompleted = plannedBugNotCompleted;
+		this.addon_PBI_completed = addon_PBI_completed;
+		this.addonBugCompleted = addonBugCompleted;
+		this.reason1 = reason1;
+		this.reason2 = reason2;
+		this.reason3 = reason3;
+		this.reason4 = reason4;
+		this.reason5 = reason5;
+		this.reasonOther = reasonOther;
+		this.supportInd = supportInd;
+		this.valueInd = valueInd;
+		this.newValueInd = newValueInd;
+		this.runInd = runInd;
+		this.growInd = growInd;
+		this.sprintCapacity = sprintCapacity;
+		this.plannedCapacity = plannedCapacity;
+		this.actualCapacity = actualCapacity;
+		this.estimatedHours = estimatedHours;
+		this.completedHours = completedHours;
+		this.createDate = createDate;
+		this.lastUpdDate = lastUpdDate;
+	}
+
+
+		public String getScrumMasterEmail() {
+			return scrumMasterEmail;
+		}
+
+
+		public void setScrumMasterEmail(String scrumMasterEmail) {
+			this.scrumMasterEmail = scrumMasterEmail;
 		}
 
 

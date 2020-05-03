@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.tax.sprintreport.dao.SprintReportDao;
 import com.tax.sprintreport.entity.SprintReportEntity;
+import com.tax.sprintreport.entity.SprintReportEntityKey;
 import com.tax.sprintreport.param.SprintReportResponse;
 
 @Service
@@ -28,6 +28,7 @@ private List<SprintReportResponse> buildSprintReportResponse(List<SprintReportEn
 						sprintReport.getSprintReportEntitykey().getSprintNum(),
 						sprintReport.getSprintStartdate(),
 						sprintReport.getSprintEnddate(),
+						sprintReport.getScrumMasterEmail(),
 						sprintReport.getPlanned_PBI_Completed(),
 						sprintReport.getPlanned_PBI_NotCompleted(),
 						sprintReport.getPlannedBugCompleted(),
@@ -70,8 +71,55 @@ private List<SprintReportResponse> buildSprintReportResponse(List<SprintReportEn
 	@Override
 	public List<SprintReportResponse> getLastSprintReportByTeamID(String teamID) {
 		return buildSprintReportResponse(sprintReportDao.getLastSprintReportByTeamID(teamID));
-
 		
+	}
+
+	/*************************8
+	 * Create a New Sprint Report
+	 ***************************/
+	@Override
+	public SprintReportEntity newSprintReport(SprintReportResponse sprintReportResponse) {
+		
+		
+		//Built primary key from response
+		SprintReportEntityKey sprintReportEntityKey = new SprintReportEntityKey(
+				sprintReportResponse.getTeamID(),
+				sprintReportResponse.getSprintNum()
+				);
+		
+		//Build Entity Key to save data
+		SprintReportEntity sprintReportEntity = new SprintReportEntity(
+				sprintReportEntityKey,
+				sprintReportResponse.getSprintStartdate(),
+				sprintReportResponse.getSprintEnddate(),
+				sprintReportResponse.getScrumMasterEmail(),
+				sprintReportResponse.getPlanned_PBI_Completed(),
+				sprintReportResponse.getPlanned_PBI_NotCompleted(),
+				sprintReportResponse.getPlannedBugCompleted(),
+				sprintReportResponse.getPlannedBugNotCompleted(),
+				sprintReportResponse.getAddon_PBI_completed(),
+				sprintReportResponse.getAddonBugCompleted(),
+				sprintReportResponse.getReason1(),
+				sprintReportResponse.getReason2(),
+				sprintReportResponse.getReason3(),
+				sprintReportResponse.getReason4(),
+				sprintReportResponse.getReason5(),
+				sprintReportResponse.getReasonOther(),
+				sprintReportResponse.getSupportInd(),
+				sprintReportResponse.getValueInd(),
+				sprintReportResponse.getNewValueInd(),
+				sprintReportResponse.getRunInd(),
+				sprintReportResponse.getGrowInd(),
+				sprintReportResponse.getSprintCapacity(),
+				sprintReportResponse.getPlannedCapacity(),
+				sprintReportResponse.getActualCapacity(),
+				sprintReportResponse.getEstimatedHours(),
+				sprintReportResponse.getCompletedHours(),
+				sprintReportResponse.getCreateDate(),
+				sprintReportResponse.getLastUpdDate()
+				);
+		
+		   return sprintReportDao.newSprintReport(sprintReportEntity);
 	}
 
 }
