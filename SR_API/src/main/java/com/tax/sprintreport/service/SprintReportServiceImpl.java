@@ -53,8 +53,7 @@ private List<SprintReportResponse> buildSprintReportResponse(List<SprintReportEn
 						sprintReport.getCompletedHours(),
 						sprintReport.getCreateDate(),
 						sprintReport.getLastUpdDate()
-						)
-				).collect(Collectors.toList());
+						)).collect(Collectors.toList());
 		System.out.println(SprintReportResponse);
 		return SprintReportResponse;
 	}

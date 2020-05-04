@@ -46,13 +46,11 @@ public class SprintReportController {
 	
     }
 	
-	
 	//********************
 	// New Sprint Report
 	//*******************
 	@PostMapping("/sprintreport/new")
 	public SprintReportEntity newSprintReport(@RequestBody SprintReportResponse sprintReportResponse){
-
 			return sprintReportService.newSprintReport(sprintReportResponse);
 		}
 	

@@ -33,14 +33,17 @@ public class OTRequestServiceImpl implements OTRequestService{
 				OTRequest -> new OTRequestResponse(
 						OTRequest.getOTRequestEntityKey().getCategory(),
 						OTRequest.getOTRequestEntityKey().getRequestID(),
+						OTRequest.getRequestShortDesc(),
 						OTRequest.getRequestDesc(),
+						OTRequest.getDateStarted(),
+						OTRequest.getDateCompleted(),
+						OTRequest.getDateImplemeted(),
 						OTRequest.getOutcome(),
 						OTRequest.getStatus()
 						)).collect(Collectors.toList());
 		System.out.println(OTRequestResponse);
 		return OTRequestResponse;
 	}
-	
 	
 	
 	@Override
