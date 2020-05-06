@@ -34,51 +34,465 @@
           </mat-form-field>
         </div>
         <button type="submit" class="btn btn-primary">Save</button>
+        <mat-tab-group>
+          <!-- Current Sprint Tab -->
+          <mat-tab label="Current Sprint Report">
+            <div class="container">
+              <!-- Section 1 -->
+              <div class="row">
+              <div class="col-md-8">
+                <!-- Orginial PBIs -->
+                <div class="row">
+                  <div class="col-md-4 align-self-center">
+                    <mat-label>Orginally Planned PBIs</mat-label>
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="completion">
+                      <mat-label>Completed</mat-label>
+                      <input matInput type="number" class="" formControlName="origPbiComp" >
+                    </mat-form-field>                
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="completion">
+                      <mat-label>Not Completed</mat-label>
+                      <input matInput  type="number" formControlName="origPbiIncomp" >
+                    </mat-form-field>                
+                  </div>
+                  <div class="col-md-2">
+                    <mat-label>%</mat-label>
+                    <p>{{ ((origPbiComp.value/(origPbiComp.value+origPbiIncomp.value))*100).toFixed(2) || 0}}</p>                
+                  </div>             
+                </div>
+                <!-- Orginal Bugs -->
+                <div class="row">
+                  <div class="col-md-4 align-self-center">
+                    <mat-label>Orginally Planned Bugs</mat-label>
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="completion">
+                      <mat-label>Completed</mat-label>
+                      <input matInput type="text" formControlName="origBugComp" >
+                    </mat-form-field>                
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="completion">
+                      <mat-label>Not Completed</mat-label>
+                      <input matInput type="text" formControlName="origBugIncomp" >
+                    </mat-form-field>                
+                  </div>
+                  <div class="col-md-2">
+                    <mat-label>%</mat-label>
+                    <p>{{ ((origBugComp.value/(origBugComp.value+origBugIncomp.value))*100).toFixed(2) || "0"}}</p>                
+                  </div>
+                </div>
+                <hr>
+                <!-- Additional Bugs and PBIs -->
+                <div class="row">
+                  <div class="col-md-4 align-self-center">
+                    <mat-label>Additional PBIs</mat-label>
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="completion">
+                      <mat-label>Completed</mat-label>
+                      <input matInput type="text" formControlName="addPbiComp" >
+                    </mat-form-field>                
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="completion">
+                      <mat-label>Not Completed</mat-label>
+                      <input matInput type="text" formControlName="addPbiIncomp" >
+                    </mat-form-field>                
+                  </div>
+                  <div class="col-md-2">
+                    <mat-label>%</mat-label>
+                    <p>{{ ((addPbiComp.value/(addPbiComp.value+addPbiIncomp.value))*100).toFixed(2) || "0" }}</p>                
+                  </div>
+                </div>
+                <!-- Additional Bugs  -->
+                <div class="row">
+                  <div class="col-md-4 align-self-center">
+                    <mat-label>Additional Bugs</mat-label>
+                  </div>
+                  <div class="col-md-3" >
+                    <mat-form-field class="completion">
+                      <mat-label>Completed</mat-label>
+                      <input matInput type="text" formControlName="addBugComp">
+                    </mat-form-field>                
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="completion">
+                      <mat-label>Not Completed</mat-label>
+                      <input matInput type="text" formControlName="addBugIncomp">
+                    </mat-form-field>                
+                  </div>
+                  <div class="col-md-2">
+                    <mat-label>%</mat-label>
+                    <p>{{ ((addBugComp.value/(addBugComp.value+addBugIncomp.value))*100).toFixed(2) || "0" }}</p>                
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <h4>Reasons For Not Completing</h4>
+                <mat-checkbox class="mx-2 my-1 reasons" *ngFor="let reason of reasons" formControlName="{{reason.code}}">{{reason.reason_desc}}</mat-checkbox>
+                  <!-- <mat-checkbox class="mx-2 my-1"  name="other">Other
+                    <span *ngIf="otherEnabled">
+                      <mat-form-field>
+                        <input matInput type="text" placeholder="">
+                      </mat-form-field>
+                    </span>
+                  </mat-checkbox> -->
+              </div>
+              </div>
+              <hr>
+              <!-- Section 2 -->
+              <div class="container row justify-content-around">
+                <div class="col-md-4 ">
+                  <p>OTR</p>
+                  <hr>
+                  <!-- <mat-divider></mat-divider> -->
+                  <mat-form-field>
+                    <mat-label>OTRs</mat-label>
+                    <mat-select  formControlName="otr" multiple>
+                      <mat-select-trigger>
+                        {{otrSelect.value ? otrSelect.value[0] : ''}}
+                        <span *ngIf="otrSelect.value?.length > 1" class="plus1Selection">
+                          (+{{otrSelect.value.length - 1}} {{otrSelect.value?.length === 2 ? 'other' : 'others'}})
+                        </span>
+                      </mat-select-trigger>
+                      <mat-option *ngFor="let otr of otrList" [value]="otr">{{otr}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <p>OTRs Selected: <span>
+                    <mat-chip-list>
+                      <mat-chip *ngFor="let otr of otrSelect.value">{{otr}}</mat-chip>
+                    </mat-chip-list>
+                  </span></p>              
+                </div>
+                <div class="col-md-4">
+                  <p>ITR</p>
+                  <hr>
+                  <mat-form-field>
+                    <mat-label>ITRs</mat-label>
+                    <mat-select formControlName="itr" multiple>
+                      <mat-select-trigger>
+                        {{itrSelect.value ? itrSelect.value[0] : ''}}
+                        <span *ngIf="itrSelect.value?.length > 1" class="plus1Selection">
+                          (+{{itrSelect.value.length - 1}} {{itrSelect.value?.length === 2 ? 'other' : 'others'}})
+                        </span>
+                      </mat-select-trigger>
+                      <mat-option *ngFor="let itr of itrList" [value]="itr">{{itr}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <p>ITRs Selected: <span>
+                    <mat-chip-list>
+                      <mat-chip *ngFor="let itr of itrSelect.value">{{itr}}</mat-chip>
+                    </mat-chip-list>
+                  </span></p>
+                </div>   
+              </div>  <!--S2 End -->
+              <hr>
+              <!-- Section 3 -->
+              <div class="row">
+                <div class="col-md-6">
+                  <!-- Sprint Capacity -->
+                  <p>Sprint Capacity</p>
+                  <table class="table table-responsive" id="capacityTable">
+                    <thead>
+                      <th scope="col"></th>
+                      <th *ngFor="let cat of sprintCategory" class="col-md-1">{{cat}}</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Hours</td>
+                        <td *ngFor="let cat of sprintCategory">
+                          <!-- Need to Assemble form conponents involved in ngfor-created form -->
+                          <mat-form-field>
+                            <input matInput type="number" placeholder="#" formControlName="{{cat | lowercase}}">
+                          </mat-form-field>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- <mat-divider [vertical]=true></mat-divider> -->
+              <!-- </div>
+              <div class="row justify-content-center"> -->
+                <div class="col-md-6">
+                  <!-- Sprint Hours -->
+                  <p>Sprint Hours</p>
+                  <table class="table table-responsive" id="hoursTable">
+                    <thead>
+                      <th scope="col"></th>
+                      <th *ngFor="let hour of sprintHours">{{hour}}</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Hours</td>
+                        <td *ngFor="let hour of sprintHours">
+                          <!-- Need to Assemble form conponents involved in ngfor-created form -->
+                          <mat-form-field>
+                            <input matInput type="number" placeholder="#" formControlName="{{hour | lowercase}}">
+                          </mat-form-field>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>     
+                </div>
+              </div> <!--S3 End-->
+            </div>  <!--Main Container End--> 
+          </mat-tab>
+          <!-- Past Sprint Tab -->
+          <mat-tab label="Previous Sprint Report">
+            <div class="container">
+              <!-- Section 1 -->
+              <div class="row">
+              <div class="col-md-8">
+                <!-- Orginial PBIs -->
+                <div class="row">
+                  <div class="col-md-4 align-self-center">
+                    <mat-label>Orginally Planned PBIs</mat-label>
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="completion">
+                      <mat-label>Completed</mat-label>
+                      <input matInput type="number" class="" formControlName="origPbiComp" >
+                    </mat-form-field>                
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="completion">
+                      <mat-label>Not Completed</mat-label>
+                      <input matInput  type="number" formControlName="origPbiIncomp" >
+                    </mat-form-field>                
+                  </div>
+                  <div class="col-md-2">
+                    <mat-label>%</mat-label>
+                    <p>{{ ((origPbiComp.value/(origPbiComp.value+origPbiIncomp.value))*100).toFixed(2) || 0}}</p>                
+                  </div>             
+                </div>
+                <!-- Orginal Bugs -->
+                <div class="row">
+                  <div class="col-md-4 align-self-center">
+                    <mat-label>Orginally Planned Bugs</mat-label>
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="completion">
+                      <mat-label>Completed</mat-label>
+                      <input matInput type="text" formControlName="origBugComp" >
+                    </mat-form-field>                
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="completion">
+                      <mat-label>Not Completed</mat-label>
+                      <input matInput type="text" formControlName="origBugIncomp" >
+                    </mat-form-field>                
+                  </div>
+                  <div class="col-md-2">
+                    <mat-label>%</mat-label>
+                    <p>{{ ((origBugComp.value/(origBugComp.value+origBugIncomp.value))*100).toFixed(2) || "0"}}</p>                
+                  </div>
+                </div>
+                <hr>
+                <!-- Additional Bugs and PBIs -->
+                <div class="row">
+                  <div class="col-md-4 align-self-center">
+                    <mat-label>Additional PBIs</mat-label>
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="completion">
+                      <mat-label>Completed</mat-label>
+                      <input matInput type="text" formControlName="addPbiComp" >
+                    </mat-form-field>                
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="completion">
+                      <mat-label>Not Completed</mat-label>
+                      <input matInput type="text" formControlName="addPbiIncomp" >
+                    </mat-form-field>                
+                  </div>
+                  <div class="col-md-2">
+                    <mat-label>%</mat-label>
+                    <p>{{ ((addPbiComp.value/(addPbiComp.value+addPbiIncomp.value))*100).toFixed(2) || "0" }}</p>                
+                  </div>
+                </div>
+                <!-- Additional Bugs  -->
+                <div class="row">
+                  <div class="col-md-4 align-self-center">
+                    <mat-label>Additional Bugs</mat-label>
+                  </div>
+                  <div class="col-md-3" >
+                    <mat-form-field class="completion">
+                      <mat-label>Completed</mat-label>
+                      <input matInput type="text" formControlName="addBugComp">
+                    </mat-form-field>                
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="completion">
+                      <mat-label>Not Completed</mat-label>
+                      <input matInput type="text" formControlName="addBugIncomp">
+                    </mat-form-field>                
+                  </div>
+                  <div class="col-md-2">
+                    <mat-label>%</mat-label>
+                    <p>{{ ((addBugComp.value/(addBugComp.value+addBugIncomp.value))*100).toFixed(2) || "0" }}</p>                
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <h4>Reasons For Not Completing</h4>
+                <mat-checkbox class="mx-2 my-1 reasons" *ngFor="let reason of reasons" formControlName="{{reason.code}}">{{reason.reason_desc}}</mat-checkbox>
+                  <!-- <mat-checkbox class="mx-2 my-1"  name="other">Other
+                    <span *ngIf="otherEnabled">
+                      <mat-form-field>
+                        <input matInput type="text" placeholder="">
+                      </mat-form-field>
+                    </span>
+                  </mat-checkbox> -->
+              </div>
+              </div>
+              <hr>
+              <!-- Section 2 -->
+              <div class="container row justify-content-around">
+                <div class="col-md-4 ">
+                  <p>OTR</p>
+                  <hr>
+                  <!-- <mat-divider></mat-divider> -->
+                  <mat-form-field>
+                    <mat-label>OTRs</mat-label>
+                    <mat-select  formControlName="otr" multiple>
+                      <mat-select-trigger>
+                        {{otrSelect.value ? otrSelect.value[0] : ''}}
+                        <span *ngIf="otrSelect.value?.length > 1" class="plus1Selection">
+                          (+{{otrSelect.value.length - 1}} {{otrSelect.value?.length === 2 ? 'other' : 'others'}})
+                        </span>
+                      </mat-select-trigger>
+                      <mat-option *ngFor="let otr of otrList" [value]="otr">{{otr}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <p>OTRs Selected: <span>
+                    <mat-chip-list>
+                      <mat-chip *ngFor="let otr of otrSelect.value">{{otr}}</mat-chip>
+                    </mat-chip-list>
+                  </span></p>              
+                </div>
+                <div class="col-md-4">
+                  <p>ITR</p>
+                  <hr>
+                  <mat-form-field>
+                    <mat-label>ITRs</mat-label>
+                    <mat-select formControlName="itr" multiple>
+                      <mat-select-trigger>
+                        {{itrSelect.value ? itrSelect.value[0] : ''}}
+                        <span *ngIf="itrSelect.value?.length > 1" class="plus1Selection">
+                          (+{{itrSelect.value.length - 1}} {{itrSelect.value?.length === 2 ? 'other' : 'others'}})
+                        </span>
+                      </mat-select-trigger>
+                      <mat-option *ngFor="let itr of itrList" [value]="itr">{{itr}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <p>ITRs Selected: <span>
+                    <mat-chip-list>
+                      <mat-chip *ngFor="let itr of itrSelect.value">{{itr}}</mat-chip>
+                    </mat-chip-list>
+                  </span></p>
+                </div>   
+              </div>  <!--S2 End -->
+              <hr>
+              <!-- Section 3 -->
+              <div class="row">
+                <div class="col-md-6">
+                  <!-- Sprint Capacity -->
+                  <p>Sprint Capacity</p>
+                  <table class="table table-responsive" id="capacityTable">
+                    <thead>
+                      <th scope="col"></th>
+                      <th *ngFor="let cat of sprintCategory" class="col-md-1">{{cat}}</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Hours</td>
+                        <td *ngFor="let cat of sprintCategory">
+                          <!-- Need to Assemble form conponents involved in ngfor-created form -->
+                          <mat-form-field>
+                            <input matInput type="number" placeholder="#" formControlName="{{cat | lowercase}}">
+                          </mat-form-field>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- <mat-divider [vertical]=true></mat-divider> -->
+              <!-- </div>
+              <div class="row justify-content-center"> -->
+                <div class="col-md-6">
+                  <!-- Sprint Hours -->
+                  <p>Sprint Hours</p>
+                  <table class="table table-responsive" id="hoursTable">
+                    <thead>
+                      <th scope="col"></th>
+                      <th *ngFor="let hour of sprintHours">{{hour}}</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Hours</td>
+                        <td *ngFor="let hour of sprintHours">
+                          <!-- Need to Assemble form conponents involved in ngfor-created form -->
+                          <mat-form-field>
+                            <input matInput type="number" placeholder="#" formControlName="{{hour | lowercase}}">
+                          </mat-form-field>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>     
+                </div>
+              </div> <!--S3 End-->
+            </div>  <!-- Previous Container End--> 
+          </mat-tab>
+        </mat-tab-group>
         <hr>
         <div class="container">
           <!-- Section 1 -->
           <div class="row">
-          <div class="col-8">
+          <div class="col-md-8">
             <!-- Orginial PBIs -->
             <div class="row">
-              <div class="col-4 align-self-center">
+              <div class="col-md-4 align-self-center">
                 <mat-label>Orginally Planned PBIs</mat-label>
               </div>
-              <div class="col-3">
+              <div class="col-md-3">
                 <mat-form-field class="completion">
                   <mat-label>Completed</mat-label>
                   <input matInput type="number" class="" formControlName="origPbiComp" >
                 </mat-form-field>                
               </div>
-              <div class="col-3">
+              <div class="col-md-3">
                 <mat-form-field class="completion">
                   <mat-label>Not Completed</mat-label>
                   <input matInput  type="number" formControlName="origPbiIncomp" >
                 </mat-form-field>                
               </div>
-              <div class="col-2">
+              <div class="col-md-2">
                 <mat-label>%</mat-label>
                 <p>{{ ((origPbiComp.value/(origPbiComp.value+origPbiIncomp.value))*100).toFixed(2) || 0}}</p>                
               </div>             
             </div>
             <!-- Orginal Bugs -->
             <div class="row">
-              <div class="col-4 align-self-center">
+              <div class="col-md-4 align-self-center">
                 <mat-label>Orginally Planned Bugs</mat-label>
               </div>
-              <div class="col-3">
+              <div class="col-md-3">
                 <mat-form-field class="completion">
                   <mat-label>Completed</mat-label>
                   <input matInput type="text" formControlName="origBugComp" >
                 </mat-form-field>                
               </div>
-              <div class="col-3">
+              <div class="col-md-3">
                 <mat-form-field class="completion">
                   <mat-label>Not Completed</mat-label>
                   <input matInput type="text" formControlName="origBugIncomp" >
                 </mat-form-field>                
               </div>
-              <div class="col-2">
+              <div class="col-md-2">
                 <mat-label>%</mat-label>
                 <p>{{ ((origBugComp.value/(origBugComp.value+origBugIncomp.value))*100).toFixed(2) || "0"}}</p>                
               </div>
@@ -86,52 +500,52 @@
             <hr>
             <!-- Additional Bugs and PBIs -->
             <div class="row">
-              <div class="col-4 align-self-center">
+              <div class="col-md-4 align-self-center">
                 <mat-label>Additional PBIs</mat-label>
               </div>
-              <div class="col-3">
+              <div class="col-md-3">
                 <mat-form-field class="completion">
                   <mat-label>Completed</mat-label>
                   <input matInput type="text" formControlName="addPbiComp" >
                 </mat-form-field>                
               </div>
-              <div class="col-3">
+              <div class="col-md-3">
                 <mat-form-field class="completion">
                   <mat-label>Not Completed</mat-label>
                   <input matInput type="text" formControlName="addPbiIncomp" >
                 </mat-form-field>                
               </div>
-              <div class="col-2">
-                <mat-label>Percentage</mat-label>
+              <div class="col-md-2">
+                <mat-label>%</mat-label>
                 <p>{{ ((addPbiComp.value/(addPbiComp.value+addPbiIncomp.value))*100).toFixed(2) || "0" }}</p>                
               </div>
             </div>
             <!-- Additional Bugs  -->
             <div class="row">
-              <div class="col-4 align-self-center">
+              <div class="col-md-4 align-self-center">
                 <mat-label>Additional Bugs</mat-label>
               </div>
-              <div class="col-3" >
+              <div class="col-md-3" >
                 <mat-form-field class="completion">
                   <mat-label>Completed</mat-label>
                   <input matInput type="text" formControlName="addBugComp">
                 </mat-form-field>                
               </div>
-              <div class="col-3">
+              <div class="col-md-3">
                 <mat-form-field class="completion">
                   <mat-label>Not Completed</mat-label>
                   <input matInput type="text" formControlName="addBugIncomp">
                 </mat-form-field>                
               </div>
-              <div class="col-2">
-                <mat-label>Percentage</mat-label>
+              <div class="col-md-2">
+                <mat-label>%</mat-label>
                 <p>{{ ((addBugComp.value/(addBugComp.value+addBugIncomp.value))*100).toFixed(2) || "0" }}</p>                
               </div>
             </div>
           </div>
-          <div class="col-4">
+          <div class="col-md-4">
             <h4>Reasons For Not Completing</h4>
-            <mat-checkbox class="mx-2 my-1" *ngFor="let reason of reasons" name="{{reason.code}}">{{reason.reason_desc}}</mat-checkbox>
+            <mat-checkbox class="mx-2 my-1 reasons" *ngFor="let reason of reasons" formControlName="{{reason.code}}">{{reason.reason_desc}}</mat-checkbox>
               <!-- <mat-checkbox class="mx-2 my-1"  name="other">Other
                 <span *ngIf="otherEnabled">
                   <mat-form-field>
@@ -144,7 +558,7 @@
           <hr>
           <!-- Section 2 -->
           <div class="container row justify-content-around">
-            <div class="col-4 ">
+            <div class="col-md-4 ">
               <p>OTR</p>
               <hr>
               <!-- <mat-divider></mat-divider> -->
@@ -166,7 +580,7 @@
                 </mat-chip-list>
               </span></p>              
             </div>
-            <div class="col-4">
+            <div class="col-md-4">
               <p>ITR</p>
               <hr>
               <mat-form-field>
@@ -187,35 +601,61 @@
                 </mat-chip-list>
               </span></p>
             </div>   
-          </div>  
+          </div>  <!--S2 End -->
           <hr>
-          <!-- Sprint Hours Categories -->
+          <!-- Section 3 -->
           <div class="row">
-            <div class="col">
-              <h4>Sprint Hour Dissection</h4>
-              <table class="table">
+            <div class="col-md-6">
+              <!-- Sprint Capacity -->
+              <p>Sprint Capacity</p>
+              <table class="table table-responsive" id="capacityTable">
                 <thead>
-                  <th scope="col">Sprint</th>
-                  <th scope="col">Hours</th>
+                  <th scope="col"></th>
+                  <th *ngFor="let cat of sprintCategory" class="col-md-1">{{cat}}</th>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let cat of sprintCategory">
-                    <td>{{cat}}</td>
-                    <td>
+                  <tr>
+                    <td>Hours</td>
+                    <td *ngFor="let cat of sprintCategory">
                       <!-- Need to Assemble form conponents involved in ngfor-created form -->
                       <mat-form-field>
-                        <input matInput type="text" placeholder="#" formControlName="{{cat}}">
+                        <input matInput type="number" placeholder="#" formControlName="{{cat | lowercase}}">
                       </mat-form-field>
                     </td>
                   </tr>
                 </tbody>
-              </table>              
+              </table>
             </div>
-          </div>
-        </div>  <!--Container-->      
+            <!-- <mat-divider [vertical]=true></mat-divider> -->
+          <!-- </div>
+          <div class="row justify-content-center"> -->
+            <div class="col-md-6">
+              <!-- Sprint Hours -->
+              <p>Sprint Hours</p>
+              <table class="table table-responsive" id="hoursTable">
+                <thead>
+                  <th scope="col"></th>
+                  <th *ngFor="let hour of sprintHours">{{hour}}</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Hours</td>
+                    <td *ngFor="let hour of sprintHours">
+                      <!-- Need to Assemble form conponents involved in ngfor-created form -->
+                      <mat-form-field>
+                        <input matInput type="number" placeholder="#" formControlName="{{hour | lowercase}}">
+                      </mat-form-field>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>     
+            </div>
+          </div> <!--S3 End-->
+        </div>  <!--Main Container End--> 
+        
       </form>
     </mat-card-content>
-  </mat-card><br>
+  </mat-card>
 </div>
 <br>
 <!-- Dyanmic Form -->

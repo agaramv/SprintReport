@@ -9,7 +9,9 @@ export class sprintReport{
     planned_bug_completed:number;
     planned_bug_not_complete:number;
     Addon_PBI_completed:number;
+    Addon_PBI_not_complete:number;
     Addon_bug_completed:number;
+    Addon_bug_not_complete:number;
     reason_1:string;
     reason_2:string;
     reason_3:string;
