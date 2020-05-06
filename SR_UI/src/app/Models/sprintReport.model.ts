@@ -1,31 +1,87 @@
 export class sprintReport{
-    sprintStartDate:Date //Up to change object type
-    sprintEndDate:Date //up to change object type
-    teamId:number
-    activeInd:string
-    workCode:string
-    workValue:string
-    infoType:string
-    supportInd:string
-    valueInd:string
-    newValueInd:string
-    runInd:string
-    growInd:string
-    transformInd:string
+    team_id:number
+    sprint_num:number;
+    sprint_start_date:Date; //Up to change object type
+    sprint_end_date:Date; //up to change object type
+    scrum_master_email:Text;
+    planned_PBI_completed:number;
+    planned_PBI_not_complete:number;
+    planned_bug_completed:number;
+    planned_bug_not_complete:number;
+    Addon_PBI_completed:number;
+    Addon_PBI_not_complete:number;
+    Addon_bug_completed:number;
+    Addon_bug_not_complete:number;
+    reason_1:string;
+    reason_2:string;
+    reason_3:string;
+    reason_4:string;
+    reason_5:string;
+    reason_other:string;
+    support_ind:string;
+    value_ind:string;
+    new_value_ind:string;
+    run_ind:string;
+    grow_ind:string;
+    sprint_capacity:number;
+    planned_capacity:number;
+    actual_capacity:number;
+    estimated_hours:number;
+    completed_hours:number;
 
-    constructor(sprintStartDate:Date, sprintEndDate:Date, teamId:number, activeInd:string, workCode:string, workValue:string, infoType:string, supportInd:string, valueInd:string, newValueInd:string, runInd:string, growInd:string, transformInd:string){
-        this.sprintStartDate=sprintStartDate
-        this.sprintEndDate=sprintEndDate
-        this.teamId=teamId;
-        this.activeInd=activeInd;
-        this.workCode=workCode;
-        this.workValue=workValue;
-        this.infoType=infoType;
-        this.supportInd=supportInd;
-        this.valueInd=valueInd; 
-        this.newValueInd=newValueInd;
-        this.runInd=runInd;
-        this.growInd=growInd;
-        this.transformInd=transformInd;
+    constructor(team_id:number,
+        sprint_num:number,
+        sprint_start_date:Date, //Up to change object type
+        sprint_end_date:Date, //up to change object type
+        scrum_master_email:Text,
+        planned_PBI_completed:number,
+        planned_PBI_not_complete:number,
+        planned_bug_completed:number,
+        planned_bug_not_complete:number,
+        Addon_PBI_completed:number,
+        Addon_bug_completed:number,
+        reason_1:string,
+        reason_2:string,
+        reason_3:string,
+        reason_4:string,
+        reason_5:string,
+        reason_other:string,
+        support_ind:string,
+        value_ind:string,
+        new_value_ind:string,
+        run_ind:string,
+        grow_ind:string,
+        sprint_capacity:number,
+        planned_capacity:number,
+        actual_capacity:number,
+        estimated_hours:number,
+        completed_hours:number){
+        this.team_id=team_id;
+        this.sprint_num=sprint_num;
+        this.sprint_start_date=sprint_start_date;
+        this.sprint_end_date=sprint_end_date;
+        this.scrum_master_email=scrum_master_email;
+        this.planned_PBI_completed=planned_PBI_completed;
+        this.planned_PBI_not_complete=planned_PBI_not_complete;
+        this.planned_bug_completed=planned_bug_completed;
+        this.planned_bug_not_complete=planned_bug_not_complete;
+        this.Addon_PBI_completed=Addon_PBI_completed;
+        this.Addon_bug_completed=Addon_bug_completed;
+        this.reason_1=reason_1; 
+        this.reason_2=reason_2;
+        this.reason_3=reason_3;
+        this.reason_4=reason_4;
+        this.reason_5=reason_5;
+        this.reason_other=reason_other;
+        this.support_ind=support_ind;
+        this.value_ind=value_ind;
+        this.new_value_ind=new_value_ind;
+        this.run_ind=run_ind;
+        this.grow_ind=grow_ind;
+        this.sprint_capacity=sprint_capacity; 
+        this.planned_capacity=planned_capacity;
+        this.actual_capacity=actual_capacity;
+        this.estimated_hours=estimated_hours;
+        this.completed_hours=completed_hours;
     }
 }

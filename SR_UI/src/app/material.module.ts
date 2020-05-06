@@ -42,6 +42,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
     imports:[
@@ -64,6 +65,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
         MatDividerModule,
         MatGridListModule,
         MatExpansionModule,
+        MatNativeDateModule
     ],
     exports:[
         MatFormFieldModule, 
