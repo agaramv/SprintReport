@@ -1,5 +1,9 @@
 package com.tax.sprintreport.repository;
 
-public interface OTRequestReportRepository extends JpaRepository
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.tax.sprintreport.entity.OTRequestEntity;
+
+public interface OTRequestReportRepository extends JpaRepository<OTRequestEntity, String>{
 
 }

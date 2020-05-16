@@ -47,38 +47,32 @@ public class OTRequestServiceImpl implements OTRequestService{
 	
 	/*****Construct Response with choice******/
 	
-<<<<<<< HEAD
-	private List<OTRequestResponse> buildOTRequestResponseAll(List<OTRequestEntity> OTRequestEntity, String category){
-		
-		List<OTRequestResponse> OTRequestResponse = new ArrayList<OTRequestResponse>();
-
-		//Build a flat Jason object to send to client (avoid sending composite json object to client)
-		OTRequestResponse = OTRequestEntity.stream().map(
-				OTRequest -> new OTRequestResponse(
-						OTRequest.getOTRequestEntityKey().getCategory(),
-						OTRequest.getOTRequestEntityKey().getRequestID(),
-						OTRequest.getRequestDesc(),
-						OTRequest.getOutcome(),
-						OTRequest.getStatus()
-						)).collect(Collectors.toList());
-		System.out.println(OTRequestResponse);
-		return OTRequestResponse;
-	}
-
-=======
->>>>>>> Vengat
-	@Override
-	public List<OTRequestResponse> getOTRequestsAll(String category) {
-		//We have to figure out a method to get param through build response
-		System.out.println();
-		System.out.println(category);
-		System.out.println();
-		return buildOTRequestResponseAll(otRequestDao.getOTRequestsAll(category), category);
-	}
+//	private List<OTRequestResponse> buildOTRequestResponseAll(List<OTRequestEntity> OTRequestEntity, String category){
+//		
+//		List<OTRequestResponse> OTRequestResponse = new ArrayList<OTRequestResponse>();
+//
+//		//Build a flat Jason object to send to client (avoid sending composite json object to client)
+//		OTRequestResponse = OTRequestEntity.stream().map(
+//				OTRequest -> new OTRequestResponse(
+//						OTRequest.getOTRequestEntityKey().getCategory(),
+//						OTRequest.getOTRequestEntityKey().getRequestID(),
+//						OTRequest.getRequestDesc(),
+//						OTRequest.getOutcome(),
+//						OTRequest.getStatus()
+//						)).collect(Collectors.toList());
+//		System.out.println(OTRequestResponse);
+//		return OTRequestResponse;
+//	}
 
 	@Override
 	public OTRequestEntity addOTRequest(OTRequestEntity otRequestEntity) {
 		return otRequestDao.addOTRequest(otRequestEntity);
+	}
+
+	@Override
+	public List<OTRequestResponse> getOTRequestsAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
