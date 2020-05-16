@@ -97,6 +97,7 @@ export class ReportComponent implements OnInit {
     // set value
   }
 
+
   getReasons(){
     this.sprintFormService.getReasons().subscribe((data: Reason[])=>{
       // console.log(data);
@@ -129,8 +130,9 @@ export class ReportComponent implements OnInit {
   addSprintCategoriesHours(categories: any[], hours:any[]){
     categories.forEach(element => {
       this.sprintReport.addControl(element.toLowerCase(), new FormControl(''));
-      this.previousSprintReport.addControl(element.toLowerCase(), new FormControl(''));
+      // this.previousSprintReport.addControl(element.toLowerCase(), new FormControl(''));
     });
+
     hours.forEach(element => {
       this.sprintReport.addControl(element.toLowerCase(), new FormControl(''));
       this.previousSprintReport.addControl(element.toLowerCase(), new FormControl(''));

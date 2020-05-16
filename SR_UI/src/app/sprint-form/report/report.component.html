@@ -3,7 +3,7 @@
   <mat-card id="sprintReport">
     <mat-card-header>
       <mat-card-title>
-        Sprint Report
+        Sprint Report #_
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
@@ -33,7 +33,6 @@
             <mat-datepicker #sprintEnd></mat-datepicker>
           </mat-form-field>
         </div>
-        <button type="submit" class="btn btn-primary">Save</button>
         <mat-tab-group>
           <!-- Current Sprint Tab -->
           <mat-tab label="Current Sprint Report">
@@ -62,6 +61,51 @@
                     <mat-label>%</mat-label>
                     <p>{{ ((origPbiComp.value/(origPbiComp.value+origPbiIncomp.value))*100).toFixed(2) || 0}}</p>                
                   </div>             
+                </div>
+                <!-- Orginal Bugs -->
+                <div class="row">
+                  <div class="col-md-4 align-self-center">
+                    <mat-label>Orginally Planned Bugs</mat-label>
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="completion">
+                      <mat-label>Completed</mat-label>
+                      <input matInput type="text" formControlName="origBugComp" >
+                    </mat-form-field>                
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="completion">
+                      <mat-label>Not Completed</mat-label>
+                      <input matInput type="text" formControlName="origBugIncomp" >
+                    </mat-form-field>                
+                  </div>
+                  <div class="col-md-2">
+                    <mat-label>%</mat-label>
+                    <p>{{ ((origBugComp.value/(origBugComp.value+origBugIncomp.value))*100).toFixed(2) || "0"}}</p>                
+                  </div>
+                </div>
+                <hr>
+                <!-- Additional Bugs and PBIs -->
+                <div class="row">
+                  <div class="col-md-4 align-self-center">
+                    <mat-label>Additional PBIs</mat-label>
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="completion">
+                      <mat-label>Completed</mat-label>
+                      <input matInput type="text" formControlName="addPbiComp" >
+                    </mat-form-field>                
+                  </div>
+                  <div class="col-md-3">
+                    <mat-form-field class="completion">
+                      <mat-label>Not Completed</mat-label>
+                      <input matInput type="text" formControlName="addPbiIncomp" >
+                    </mat-form-field>                
+                  </div>
+                  <div class="col-md-2">
+                    <mat-label>%</mat-label>
+                    <p>{{ ((addPbiComp.value/(addPbiComp.value+addPbiIncomp.value))*100).toFixed(2) || "0" }}</p>                
+                  </div>
                 </div>
                 <!-- Orginal Bugs -->
                 <div class="row">
@@ -449,6 +493,8 @@
           </mat-tab>
         </mat-tab-group>
         <hr>        
+        <hr>
+        <button type="submit" class="btn btn-primary">Save</button>
       </form>
     </mat-card-content>
   </mat-card>

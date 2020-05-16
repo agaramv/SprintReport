@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tax.sprintreport.dao.OTRequestDao;
-import com.tax.sprintreport.entity.FormUIEntity;
 import com.tax.sprintreport.entity.OTRequestEntity;
 import com.tax.sprintreport.param.OTRequestResponse;
 
@@ -34,6 +33,30 @@ public class OTRequestServiceImpl implements OTRequestService{
 				OTRequest -> new OTRequestResponse(
 						OTRequest.getOTRequestEntityKey().getCategory(),
 						OTRequest.getOTRequestEntityKey().getRequestID(),
+						OTRequest.getRequestShortDesc(),
+						OTRequest.getRequestDesc(),
+						OTRequest.getDateStarted(),
+						OTRequest.getDateCompleted(),
+						OTRequest.getDateImplemeted(),
+						OTRequest.getOutcome(),
+						OTRequest.getStatus()
+						)).collect(Collectors.toList());
+		System.out.println(OTRequestResponse);
+		return OTRequestResponse;
+	}
+	
+	/*****Construct Response with choice******/
+	
+<<<<<<< HEAD
+	private List<OTRequestResponse> buildOTRequestResponseAll(List<OTRequestEntity> OTRequestEntity, String category){
+		
+		List<OTRequestResponse> OTRequestResponse = new ArrayList<OTRequestResponse>();
+
+		//Build a flat Jason object to send to client (avoid sending composite json object to client)
+		OTRequestResponse = OTRequestEntity.stream().map(
+				OTRequest -> new OTRequestResponse(
+						OTRequest.getOTRequestEntityKey().getCategory(),
+						OTRequest.getOTRequestEntityKey().getRequestID(),
 						OTRequest.getRequestDesc(),
 						OTRequest.getOutcome(),
 						OTRequest.getStatus()
@@ -42,9 +65,15 @@ public class OTRequestServiceImpl implements OTRequestService{
 		return OTRequestResponse;
 	}
 
+=======
+>>>>>>> Vengat
 	@Override
-	public List<OTRequestResponse> getOTRequestsAll() {
-		return buildOTRequestResponse(otRequestDao.getOTRequestsAll());
+	public List<OTRequestResponse> getOTRequestsAll(String category) {
+		//We have to figure out a method to get param through build response
+		System.out.println();
+		System.out.println(category);
+		System.out.println();
+		return buildOTRequestResponseAll(otRequestDao.getOTRequestsAll(category), category);
 	}
 
 	@Override

@@ -1,12 +1,16 @@
 package com.tax.sprintreport.param;
 
-import javax.persistence.Column;
+import java.time.LocalDate;
 
 public class OTRequestResponse {
 	
 	private String Category;
 	private String request_id; 
-	private String request_desc;
+	private String requestShortDesc;
+	private String requestDesc;
+	private LocalDate dateStarted;
+	private LocalDate dateCompleted;
+	private LocalDate dataImplemented;
 	private String outcome;
 	private String status;
 	
@@ -17,11 +21,16 @@ public class OTRequestResponse {
 	}
 
 
-	public OTRequestResponse(String category, String request_id, String request_desc, String outcome, String status) {
+	public OTRequestResponse(String category, String request_id, String requestShortDesc, String requestDesc,
+			LocalDate dateStarted, LocalDate dateCompleted, LocalDate dataImplemented, String outcome, String status) {
 		super();
 		Category = category;
 		this.request_id = request_id;
-		this.request_desc = request_desc;
+		this.requestShortDesc = requestShortDesc;
+		this.requestDesc = requestDesc;
+		this.dateStarted = dateStarted;
+		this.dateCompleted = dateCompleted;
+		this.dataImplemented = dataImplemented;
 		this.outcome = outcome;
 		this.status = status;
 	}
@@ -47,13 +56,53 @@ public class OTRequestResponse {
 	}
 
 
-	public String getRequest_desc() {
-		return request_desc;
+	public String getRequestShortDesc() {
+		return requestShortDesc;
 	}
 
 
-	public void setRequest_desc(String request_desc) {
-		this.request_desc = request_desc;
+	public void setRequestShortDesc(String requestShortDesc) {
+		this.requestShortDesc = requestShortDesc;
+	}
+
+
+	public String getRequestDesc() {
+		return requestDesc;
+	}
+
+
+	public void setRequestDesc(String requestDesc) {
+		this.requestDesc = requestDesc;
+	}
+
+
+	public LocalDate getDateStarted() {
+		return dateStarted;
+	}
+
+
+	public void setDateStarted(LocalDate dateStarted) {
+		this.dateStarted = dateStarted;
+	}
+
+
+	public LocalDate getDateCompleted() {
+		return dateCompleted;
+	}
+
+
+	public void setDateCompleted(LocalDate dateCompleted) {
+		this.dateCompleted = dateCompleted;
+	}
+
+
+	public LocalDate getDataImplemented() {
+		return dataImplemented;
+	}
+
+
+	public void setDataImplemented(LocalDate dataImplemented) {
+		this.dataImplemented = dataImplemented;
 	}
 
 
@@ -75,6 +124,5 @@ public class OTRequestResponse {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
 	
 }

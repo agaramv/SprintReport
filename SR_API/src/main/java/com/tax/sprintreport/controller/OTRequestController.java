@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,6 +34,16 @@ public class OTRequestController {
 	//*******************
 	@PostMapping("/otrequest/add")
 	public OTRequestEntity addOTRequest(@RequestBody OTRequestEntity otRequestEntity) {
+		return otRequestService.addOTRequest(otRequestEntity);
+	}
+	
+	//********************
+	// Update Request
+	//*******************
+	@PutMapping("/otrequest/update")
+	public OTRequestEntity updateOTRequest(@RequestBody OTRequestEntity otRequestEntity) {
+		//Call the same add request function to update the information	
+		//the difference is using put request
 		return otRequestService.addOTRequest(otRequestEntity);
 	}
 
