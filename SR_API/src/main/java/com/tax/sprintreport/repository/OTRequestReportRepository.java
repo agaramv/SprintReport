@@ -1,5 +1,5 @@
 package com.tax.sprintreport.repository;
 
-public interface OTRequestReportRepository {
+public interface OTRequestReportRepository extends JpaRepository
 
 }
