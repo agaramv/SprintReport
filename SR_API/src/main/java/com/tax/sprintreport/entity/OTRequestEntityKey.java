@@ -17,7 +17,6 @@ public class OTRequestEntityKey implements Serializable {
 
 	public OTRequestEntityKey() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public OTRequestEntityKey(String category, String requestID) {

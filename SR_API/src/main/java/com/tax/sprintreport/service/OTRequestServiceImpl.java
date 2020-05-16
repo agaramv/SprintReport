@@ -33,7 +33,11 @@ public class OTRequestServiceImpl implements OTRequestService{
 				OTRequest -> new OTRequestResponse(
 						OTRequest.getOTRequestEntityKey().getCategory(),
 						OTRequest.getOTRequestEntityKey().getRequestID(),
+						OTRequest.getRequestShortDesc(),
 						OTRequest.getRequestDesc(),
+						OTRequest.getDateStarted(),
+						OTRequest.getDateCompleted(),
+						OTRequest.getDateImplemeted(),
 						OTRequest.getOutcome(),
 						OTRequest.getStatus()
 						)).collect(Collectors.toList());
@@ -43,6 +47,7 @@ public class OTRequestServiceImpl implements OTRequestService{
 	
 	/*****Construct Response with choice******/
 	
+<<<<<<< HEAD
 	private List<OTRequestResponse> buildOTRequestResponseAll(List<OTRequestEntity> OTRequestEntity, String category){
 		
 		List<OTRequestResponse> OTRequestResponse = new ArrayList<OTRequestResponse>();
@@ -60,6 +65,8 @@ public class OTRequestServiceImpl implements OTRequestService{
 		return OTRequestResponse;
 	}
 
+=======
+>>>>>>> Vengat
 	@Override
 	public List<OTRequestResponse> getOTRequestsAll(String category) {
 		//We have to figure out a method to get param through build response

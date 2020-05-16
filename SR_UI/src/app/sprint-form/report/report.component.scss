@@ -12,3 +12,24 @@
     opacity: 0.75;
     font-size: 0.75em;
   }
+
+.completion{
+    width: 100%;
+}
+
+.reasons{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    flex-flow: row;
+}
+
+#capacityTable{
+    // max-width: 400px;
+    flex-direction: row;
+    // justify-content: center;
+}
+
+.category{
+    width: 5%;
+}

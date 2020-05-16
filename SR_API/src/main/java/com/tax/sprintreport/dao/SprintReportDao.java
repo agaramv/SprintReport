@@ -11,5 +11,8 @@ public interface SprintReportDao {
 	
 	//Get Last Sprint Report by Team ID
 	List<SprintReportEntity> getLastSprintReportByTeamID(String teamID);
+	
+	//New Sprint Report
+	SprintReportEntity newSprintReport(SprintReportEntity sprintReportEntity);
 
 }
