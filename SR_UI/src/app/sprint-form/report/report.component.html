@@ -8,6 +8,15 @@
     </mat-card-header>
     <mat-card-content>
       <form [formGroup]="sprintReport" (ngSubmit)="onSubmit()" id="form">
+        <!-- Scrum Master Email -->
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Team</mat-label>
+            <mat-select formControlName="email" id="email" >
+              <mat-option value="" *ngFor="let email of emails">{{email.team_id}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div> 
         <!-- Team -->
         <div class="col">
           <mat-form-field>

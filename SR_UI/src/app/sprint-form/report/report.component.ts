@@ -22,6 +22,7 @@ export class ReportComponent implements OnInit {
   sprintHours:String[]=['Estimated','Completed']
   reasons:Reason[]
   teams:Team[]
+  smemails:any[]
   otherEnabled=false;
 
   origPbiPerc:number=3;
@@ -29,6 +30,7 @@ export class ReportComponent implements OnInit {
   addPbiPerc:number;
   addBugPerc:number;
   sprintReport = this.fb.group({
+    smemail: [''],
     team: [''],
     sprintStart: [''],
     sprintEnd: [''],
