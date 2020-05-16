@@ -44,7 +44,7 @@ export class ReportComponent implements OnInit {
     itr: [],
   });
   previousSprintReport = this.fb.group({
-    team: [''],
+    team_id: [''],
     sprintStart: [''],
     sprintEnd: [''],
     origPbiComp: [''],
@@ -64,15 +64,15 @@ export class ReportComponent implements OnInit {
     this.getReasons();
     this.getTeams();
     this.addSprintCategoriesHours(this.sprintCategory,this.sprintHours);
-    this.fillPreviousSprintReport()
+    // this.fillPreviousSprintReport()
   }
 
   fillPreviousSprintReport(){
-    var previousReport:any;// get previous sprint and use param to know how far back the previous sprint for selecting past sprints
+    var previousReport;// get previous sprint and use param to know how far back the previous sprint for selecting past sprints
     // Need to get past sprints otr/itr requests
     // Could do for each in previous sprint report 
     this.previousSprintReport.patchValue({
-      team: previousReport.team_id,
+      team_id: previousReport.team_id,
       sprintStart: previousReport.sprint_start_date,
       sprintEnd: previousReport.sprint_end_date,
       origPbiComp: previousReport.planned_PBI_completed,
@@ -126,6 +126,7 @@ export class ReportComponent implements OnInit {
       this.previousSprintReport.addControl(element.toLowerCase(), new FormControl(''));
     });
     hours.forEach(element => {
+      this.sprintReport.addControl(element.toLowerCase(), new FormControl(''));
       this.previousSprintReport.addControl(element.toLowerCase(), new FormControl(''));
     });
   }
