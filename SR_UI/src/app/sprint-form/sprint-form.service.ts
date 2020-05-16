@@ -13,9 +13,9 @@ export class SprintFormService {
   constructor(private http: HttpClient) { }
   
   //Saves the sprint report info
-  saveSprintReport(report){
-    // this.buildDates(report.sprintStart);
-    this.saveRequests(report.otr, report.itr); //Need to get sprint number 
+  saveSprintReport(report){//Missing values are run, grow, transform, newValue, Support, 
+    this.buildDates(report.sprintStart);
+    // this.saveRequests(report.otr, report.itr); //Need to get sprint number 
   }
 
   saveRequests(otrs, itrs){

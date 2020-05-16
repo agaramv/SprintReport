@@ -106,9 +106,15 @@ export class ReportComponent implements OnInit {
   }
 
   addReasons(reasons: any[]){
+    // var title = "reason_";
+    // for (let index = 0; index < reasons.length; index++) {
+    //   title=title+(index+1).toString()
+    //   this.sprintReport.addControl(title, new FormControl(false));
+    //   this.previousSprintReport.addControl(title, new FormControl(false));
+    // }
     reasons.forEach(element => {
-      this.sprintReport.addControl(element.code, new FormControl(''));
-      this.previousSprintReport.addControl(element.code, new FormControl(''));
+      this.sprintReport.addControl(element.code, new FormControl(false));
+      this.previousSprintReport.addControl(element.code, new FormControl(false));
     });
   }
 
