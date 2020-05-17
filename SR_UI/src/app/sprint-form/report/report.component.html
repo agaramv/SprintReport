@@ -11,9 +11,9 @@
         <!-- Scrum Master Email -->
         <div class="col">
           <mat-form-field>
-            <mat-label>Team</mat-label>
-            <mat-select formControlName="email" id="email" >
-              <mat-option value="" *ngFor="let email of emails">{{email.team_id}}</mat-option>
+            <mat-label>Scrum Master Email</mat-label>
+            <mat-select formControlName="smemail" id="email" >
+              <mat-option value="email" *ngFor="let email of smemails">{{email}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div> 
@@ -70,51 +70,6 @@
                     <mat-label>%</mat-label>
                     <p>{{ ((origPbiComp.value/(origPbiComp.value+origPbiIncomp.value))*100).toFixed(2) || 0}}</p>                
                   </div>             
-                </div>
-                <!-- Orginal Bugs -->
-                <div class="row">
-                  <div class="col-md-4 align-self-center">
-                    <mat-label>Orginally Planned Bugs</mat-label>
-                  </div>
-                  <div class="col-md-3">
-                    <mat-form-field class="completion">
-                      <mat-label>Completed</mat-label>
-                      <input matInput type="text" formControlName="origBugComp" >
-                    </mat-form-field>                
-                  </div>
-                  <div class="col-md-3">
-                    <mat-form-field class="completion">
-                      <mat-label>Not Completed</mat-label>
-                      <input matInput type="text" formControlName="origBugIncomp" >
-                    </mat-form-field>                
-                  </div>
-                  <div class="col-md-2">
-                    <mat-label>%</mat-label>
-                    <p>{{ ((origBugComp.value/(origBugComp.value+origBugIncomp.value))*100).toFixed(2) || "0"}}</p>                
-                  </div>
-                </div>
-                <hr>
-                <!-- Additional Bugs and PBIs -->
-                <div class="row">
-                  <div class="col-md-4 align-self-center">
-                    <mat-label>Additional PBIs</mat-label>
-                  </div>
-                  <div class="col-md-3">
-                    <mat-form-field class="completion">
-                      <mat-label>Completed</mat-label>
-                      <input matInput type="text" formControlName="addPbiComp" >
-                    </mat-form-field>                
-                  </div>
-                  <div class="col-md-3">
-                    <mat-form-field class="completion">
-                      <mat-label>Not Completed</mat-label>
-                      <input matInput type="text" formControlName="addPbiIncomp" >
-                    </mat-form-field>                
-                  </div>
-                  <div class="col-md-2">
-                    <mat-label>%</mat-label>
-                    <p>{{ ((addPbiComp.value/(addPbiComp.value+addPbiIncomp.value))*100).toFixed(2) || "0" }}</p>                
-                  </div>
                 </div>
                 <!-- Orginal Bugs -->
                 <div class="row">

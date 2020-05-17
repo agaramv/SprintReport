@@ -22,7 +22,7 @@ export class ReportComponent implements OnInit {
   sprintHours:String[]=['Estimated','Completed']
   reasons:Reason[]
   teams:Team[]
-  smemails:any[]
+  smemails:any[] = ['vidur','cow']
   otherEnabled=false;
 
   origPbiPerc:number=3;
