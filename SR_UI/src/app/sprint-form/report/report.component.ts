@@ -151,14 +151,14 @@ export class ReportComponent implements OnInit {
   }
 
   // Get Requests from form
-  get origPbiComp(): any {return this.sprintReport.get('origPbiComp')}
-  get origPbiIncomp(): any {return this.sprintReport.get('origPbiIncomp')}
-  get origBugComp(): any {return this.sprintReport.get('origBugComp')}
-  get origBugIncomp(): any {return this.sprintReport.get('origBugIncomp')}
-  get addPbiComp(): any {return this.sprintReport.get('addPbiComp')}
-  get addPbiIncomp(): any {return this.sprintReport.get('addPbiIncomp')}
-  get addBugComp(): any {return this.sprintReport.get('addBugComp')}
-  get addBugIncomp(): any {return this.sprintReport.get('addBugIncomp')}
+  get origPbiComp(): any {return Number(this.sprintReport.get('origPbiComp').value)}
+  get origPbiIncomp(): any {return Number(this.sprintReport.get('origPbiIncomp').value)}
+  get origBugComp(): any {return Number(this.sprintReport.get('origBugComp').value)}
+  get origBugIncomp(): any {return Number(this.sprintReport.get('origBugIncomp').value)}
+  get addPbiComp(): any {return Number(this.sprintReport.get('addPbiComp').value)}
+  get addPbiIncomp(): any {return Number(this.sprintReport.get('addPbiIncomp').value)}
+  get addBugComp(): any {return Number(this.sprintReport.get('addBugComp').value)}
+  get addBugIncomp(): any {return Number(this.sprintReport.get('addBugIncomp').value)}
   get otrSelect() {return this.sprintReport.get('otr')}
   get itrSelect() {return this.sprintReport.get('itr')}
 

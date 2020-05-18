@@ -69,7 +69,7 @@
                   <div class="col-md-2">
                     <mat-label>%</mat-label>
                     <!-- Can do an ngif to say whether both intial values have a number selected -->
-                    <p>{{ ((origPbiComp.value/(origPbiComp.value+origPbiIncomp.value))*100).toFixed(2) || '0'}}</p>                
+                    <p>{{ (origPbiComp!='') ? (((origPbiComp/(origPbiComp+origPbiIncomp))*100).toFixed(2)) : '0.00' }}</p>                
                   </div>             
                 </div>
                 <!-- Orginal Bugs -->
@@ -91,7 +91,7 @@
                   </div>
                   <div class="col-md-2">
                     <mat-label>%</mat-label>
-                    <p>{{ ((origBugComp.value/(origBugComp.value+origBugIncomp.value))*100).toFixed(2) || "0"}}</p>                
+                    <p>{{ (origBugComp!='') ? (((origBugComp/(origBugComp+origBugIncomp))*100).toFixed(2)) : '0.00' }}</p>                
                   </div>
                 </div>
                 <hr>
@@ -114,7 +114,7 @@
                   </div>
                   <div class="col-md-2">
                     <mat-label>%</mat-label>
-                    <p>{{ ((addPbiComp.value/(addPbiComp.value+addPbiIncomp.value))*100).toFixed(2) || "0" }}</p>                
+                    <p>{{ (addPbiComp!='') ? (((addPbiComp/(addPbiComp+addPbiIncomp))*100).toFixed(2)) : '0.00' }}</p>                
                   </div>
                 </div>
                 <!-- Additional Bugs  -->
@@ -136,7 +136,7 @@
                   </div>
                   <div class="col-md-2">
                     <mat-label>%</mat-label>
-                    <p>{{ ((addBugComp.value/(addBugComp.value+addBugIncomp.value))*100).toFixed(2) || "0" }}</p>                
+                    <p>{{ (addBugComp!='') ? (((addBugComp/(addBugComp+addBugIncomp))*100).toFixed(2)) : '0.00' }}</p>                
                   </div>
                 </div>
               </div>
