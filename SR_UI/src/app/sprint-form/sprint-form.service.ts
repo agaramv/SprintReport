@@ -15,8 +15,11 @@ export class SprintFormService {
   
   //Saves the sprint report info
   saveSprintReport(report){//Missing values are run, grow, transform, newValue, Support, 
-    this.buildDates(report.sprintStart);
+    // this.buildDates(report.sprintStart);
     this.createReport(report);
+    let s = JSON.stringify(this.sprintReport)
+    console.log(s)
+    return this.http.post<any>(this.endpoint + '/sprintreport/new',s);
     // this.saveRequests(report.otr, report.itr); //Need to get sprint number 
   }
 // Missing add pbi and bug ot complete 
@@ -30,7 +33,9 @@ export class SprintFormService {
     this.sprintReport.planned_bug_completed=report.origBugComp
     this.sprintReport.planned_bug_not_complete=report.origBugIncomp
     this.sprintReport.Addon_PBI_completed=report.addPbiComp
+    this.sprintReport.Addon_PBI_not_completed=report.addPbiIncomp
     this.sprintReport.Addon_bug_completed=report.addBugComp
+    this.sprintReport.Addon_bug_not_completed=report.addBugIncomp
     this.sprintReport.reason_1=report.R01
     this.sprintReport.reason_2=report.R02
     this.sprintReport.reason_3=report.R03
@@ -48,6 +53,8 @@ export class SprintFormService {
     this.sprintReport.actual_capacity=report.actual;
     this.sprintReport.estimated_hours=report.estimated;
     this.sprintReport.completed_hours=report.completed;
+    this.sprintReport.createDate='2020-05-18';
+    this.sprintReport.last_udpdate='2020-05-18';
     console.log("Create")
     console.log(this.sprintReport);
   }
