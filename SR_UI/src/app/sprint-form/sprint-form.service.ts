@@ -2,20 +2,54 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Request } from '../Models/request.model';
+import { sprintReport } from '../Models/sprintReport.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SprintFormService {
   endpoint:any = environment.apiUrl
-  sprintReport: any[];
+  sprintReport: any = {};
   request:Request;
   constructor(private http: HttpClient) { }
   
   //Saves the sprint report info
   saveSprintReport(report){//Missing values are run, grow, transform, newValue, Support, 
     this.buildDates(report.sprintStart);
+    this.createReport(report);
     // this.saveRequests(report.otr, report.itr); //Need to get sprint number 
+  }
+// Missing add pbi and bug ot complete 
+  createReport(report){ 
+    this.sprintReport.sprint_num=1;
+    this.sprintReport.sprint_start_date=this.buildDates(report.sprintStart);
+    this.sprintReport.sprint_end_date=this.buildDates(report.sprintEnd);
+    this.sprintReport.scrum_master_email=report.smemail;
+    this.sprintReport.planned_PBI_completed=report.origPbiComp
+    this.sprintReport.planned_PBI_not_complete=report.origPbiIncomp
+    this.sprintReport.planned_bug_completed=report.origBugComp
+    this.sprintReport.planned_bug_not_complete=report.origBugIncomp
+    this.sprintReport.Addon_PBI_completed=report.addPbiComp
+    this.sprintReport.Addon_bug_completed=report.addBugComp
+    this.sprintReport.reason_1=report.R01
+    this.sprintReport.reason_2=report.R02
+    this.sprintReport.reason_3=report.R03
+    this.sprintReport.reason_4=report.R04
+    this.sprintReport.reason_5=report.R05
+    this.sprintReport.reason_other='';
+    this.sprintReport.improvements=0;
+    this.sprintReport.support_ind=0;
+    this.sprintReport.new_value_ind=0;
+    this.sprintReport.run_ind=0;
+    this.sprintReport.grow_ind=0;
+    this.sprintReport.transform_ind=0;
+    this.sprintReport.sprint_capacity=report.forecast;
+    this.sprintReport.planned_capacity=report.planned;
+    this.sprintReport.actual_capacity=report.actual;
+    this.sprintReport.estimated_hours=report.estimated;
+    this.sprintReport.completed_hours=report.completed;
+    console.log("Create")
+    console.log(this.sprintReport);
   }
 
   saveRequests(otrs, itrs){
@@ -44,7 +78,8 @@ export class SprintFormService {
   buildDates(date){
     var newDate = '';
     newDate= date.getFullYear()+'-'+ this.make2Digit(date.getMonth())+'-'+this.make2Digit(date.getDate());
-    console.log(newDate);
+    // console.log(newDate);
+    return newDate
   }
   
   //Gets previous sprint

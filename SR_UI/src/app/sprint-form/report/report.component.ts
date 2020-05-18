@@ -30,10 +30,10 @@ export class ReportComponent implements OnInit {
   addPbiPerc:number;
   addBugPerc:number;
   sprintReport = this.fb.group({
-    smemail: [''],
     team: [''],
     sprintStart: [''],
     sprintEnd: [''],
+    smemail: [''],
     origPbiComp: [''],
     origPbiIncomp: [''],
     origBugComp: [''],
@@ -146,7 +146,7 @@ export class ReportComponent implements OnInit {
     //need to change the report.value.sprintEnd and Start to the data format we want
     let form = JSON.stringify(this.sprintReport.value);
     //save form api
-    console.log(this.sprintReport)
+    console.log(this.sprintReport.value)
     this.sprintFormService.saveSprintReport(this.sprintReport.value);
   }
 

@@ -18,11 +18,12 @@ export class sprintReport{
     reason_4:string;
     reason_5:string;
     reason_other:string;
-    support_ind:string;
-    value_ind:string;
-    new_value_ind:string;
-    run_ind:string;
-    grow_ind:string;
+    improvements:number;
+    support_ind:number;
+    new_value_ind:number;
+    run_ind:number;
+    grow_ind:number;
+    transform_ind:number;
     sprint_capacity:number;
     planned_capacity:number;
     actual_capacity:number;
@@ -46,11 +47,12 @@ export class sprintReport{
         reason_4:string,
         reason_5:string,
         reason_other:string,
-        support_ind:string,
-        value_ind:string,
-        new_value_ind:string,
-        run_ind:string,
-        grow_ind:string,
+        improvements:number,
+        support_ind:number,
+        new_value_ind:number,
+        run_ind:number,
+        grow_ind:number,
+        transform_ind:number,
         sprint_capacity:number,
         planned_capacity:number,
         actual_capacity:number,
@@ -73,11 +75,12 @@ export class sprintReport{
         this.reason_4=reason_4;
         this.reason_5=reason_5;
         this.reason_other=reason_other;
+        this.improvements=improvements;
         this.support_ind=support_ind;
-        this.value_ind=value_ind;
         this.new_value_ind=new_value_ind;
         this.run_ind=run_ind;
         this.grow_ind=grow_ind;
+        this.transform_ind=transform_ind;
         this.sprint_capacity=sprint_capacity; 
         this.planned_capacity=planned_capacity;
         this.actual_capacity=actual_capacity;

@@ -68,7 +68,8 @@
                   </div>
                   <div class="col-md-2">
                     <mat-label>%</mat-label>
-                    <p>{{ ((origPbiComp.value/(origPbiComp.value+origPbiIncomp.value))*100).toFixed(2) || 0}}</p>                
+                    <!-- Can do an ngif to say whether both intial values have a number selected -->
+                    <p>{{ ((origPbiComp.value/(origPbiComp.value+origPbiIncomp.value))*100).toFixed(2) || '0'}}</p>                
                   </div>             
                 </div>
                 <!-- Orginal Bugs -->
