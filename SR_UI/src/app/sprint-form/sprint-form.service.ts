@@ -24,37 +24,38 @@ export class SprintFormService {
   }
 // Missing add pbi and bug ot complete 
   createReport(report){ 
-    this.sprintReport.sprint_num=1;
-    this.sprintReport.sprint_start_date=this.buildDates(report.sprintStart);
-    this.sprintReport.sprint_end_date=this.buildDates(report.sprintEnd);
-    this.sprintReport.scrum_master_email=report.smemail;
+    this.sprintReport.teamId='CR'
+    this.sprintReport.sprintNum=5;
+    this.sprintReport.sprintStartdate="2020-05-15";
+    this.sprintReport.sprintEnddate="2020-05-15";
+    this.sprintReport.scrumMasterEmail=report.smemail;
     this.sprintReport.planned_PBI_completed=report.origPbiComp
     this.sprintReport.planned_PBI_not_complete=report.origPbiIncomp
-    this.sprintReport.planned_bug_completed=report.origBugComp
-    this.sprintReport.planned_bug_not_complete=report.origBugIncomp
+    this.sprintReport.plannedBugCompleted=report.origBugComp
+    this.sprintReport.plannedBugNotCompleted=report.origBugIncomp
     this.sprintReport.Addon_PBI_completed=report.addPbiComp
     this.sprintReport.Addon_PBI_not_completed=report.addPbiIncomp
-    this.sprintReport.Addon_bug_completed=report.addBugComp
-    this.sprintReport.Addon_bug_not_completed=report.addBugIncomp
-    this.sprintReport.reason_1=report.R01
-    this.sprintReport.reason_2=report.R02
-    this.sprintReport.reason_3=report.R03
-    this.sprintReport.reason_4=report.R04
-    this.sprintReport.reason_5=report.R05
-    this.sprintReport.reason_other='';
-    this.sprintReport.improvements=0;
-    this.sprintReport.support_ind=0;
-    this.sprintReport.new_value_ind=0;
-    this.sprintReport.run_ind=0;
-    this.sprintReport.grow_ind=0;
-    this.sprintReport.transform_ind=0;
-    this.sprintReport.sprint_capacity=report.forecast;
-    this.sprintReport.planned_capacity=report.planned;
-    this.sprintReport.actual_capacity=report.actual;
-    this.sprintReport.estimated_hours=report.estimated;
-    this.sprintReport.completed_hours=report.completed;
-    this.sprintReport.createDate='2020-05-18';
-    this.sprintReport.last_udpdate='2020-05-18';
+    this.sprintReport.AddonBugCompleted=report.addBugComp
+    this.sprintReport.AddonBugNotCompleted=report.addBugIncomp
+    this.sprintReport.reason1=report.R01
+    this.sprintReport.reason2=report.R02
+    this.sprintReport.reason3=report.R03
+    this.sprintReport.reason4=report.R04
+    this.sprintReport.reason5=report.R05
+    this.sprintReport.reasonOther='';
+    this.sprintReport.improvement=0;
+    this.sprintReport.supportInd=0;
+    this.sprintReport.newValueInd=0;
+    this.sprintReport.runInd=0;
+    this.sprintReport.growInd=0;
+    this.sprintReport.transformInd=0;
+    this.sprintReport.sprintCapacity=report.forecast;
+    this.sprintReport.plannedCapacity=report.planned;
+    this.sprintReport.actualCapacity=report.actual;
+    this.sprintReport.estimatedHours=report.estimated;
+    this.sprintReport.completedHours=report.completed;
+    this.sprintReport.createDate="2020-05-15T20:00:00";
+    this.sprintReport.last_udpdate="2020-05-15T20:00:00";
     console.log("Create")
     console.log(this.sprintReport);
   }
@@ -91,7 +92,7 @@ export class SprintFormService {
   
   //Gets previous sprint
   getPreviousSprint(){
-    // return this.http.get<any>(this.endpoint + '/sprintreport/form');
+    return this.http.get<any>(this.endpoint + '/sprintreport/form');
     return 1;
   }
 

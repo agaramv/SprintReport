@@ -47,11 +47,11 @@ public class SprintReportEntity {
 	  private String reason5;
 	  @Column(name="reason_other")
 	  private String reasonOther;
-	  @Column(name="support_ind")
+	  @Column(name="support")
 	  private int supportInd;
 	  @Column(name="improvement")
 	  private int improvement;
-	  @Column(name="new_value_ind")
+	  @Column(name="new_value")
 	  private int newValueInd;
 	  @Column(name="run_ind")
 	  private int runInd;
