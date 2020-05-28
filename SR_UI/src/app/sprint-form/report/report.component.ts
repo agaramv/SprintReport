@@ -17,18 +17,16 @@ export class ReportComponent implements OnInit {
   otrSelected: string[];
   itr = new FormControl();
   itrList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
-
+  previous = false;
   sprintCategory:String[] = ['Forecast', 'Planned','Actual']
   sprintHours:String[]=['Estimated','Completed']
   reasons:Reason[]
   teams:Team[]
-  smemails:any[] = ['vidur','cow']
+  smemails:any[] = ['vidur@gmail.com','cow@gmail.com','test@gmail.com']
   otherEnabled=false;
-
-  origPbiPerc:number=3;
-  origBugPerc:number;
-  addPbiPerc:number;
-  addBugPerc:number;
+  sprintNumber;
+  previousSprintNumber;
+  
   sprintReport = this.fb.group({
     team: [''],
     sprintStart: [''],
@@ -49,6 +47,7 @@ export class ReportComponent implements OnInit {
     team_id: [''],
     sprintStart: [''],
     sprintEnd: [''],
+    smemail: [''],
     origPbiComp: [''],
     origPbiIncomp: [''],
     origBugComp: [''],
@@ -66,37 +65,43 @@ export class ReportComponent implements OnInit {
     this.getReasons();
     this.getTeams();
     this.addSprintCategoriesHours(this.sprintCategory,this.sprintHours);
-    // this.fillPreviousSprintReport()
+    this.fillPreviousSprintReport()
   }
 
   fillPreviousSprintReport(){
-    var previousReport;// get previous sprint and use param to know how far back the previous sprint for selecting past sprints
     // Need to get past sprints otr/itr requests
-    // Could do for each in previous sprint report 
-    this.previousSprintReport.patchValue({
-      team_id: previousReport.team_id,
-      sprintStart: previousReport.sprint_start_date,
-      sprintEnd: previousReport.sprint_end_date,
-      origPbiComp: previousReport.planned_PBI_completed,
-      origPbiIncomp: previousReport.planned_PBI_not_complete,
-      origBugComp: previousReport.planned_bug_completed,
-      origBugIncomp: previousReport.planned_bug_completed,
-      addPbiComp: previousReport.Addon_PBI_completed,
-      addPbiIncomp: previousReport.Addon_PBI_not_complete,
-      addBugComp: previousReport.Addon_bug_completed,
-      addBugIncomp: previousReport.Addon_bug_not_complete,
-      R01: previousReport.reason_1,
-      R02: previousReport.reason_2,
-      R03: previousReport.reason_3,
-      R04: previousReport.reason_4,
-      R05: previousReport.reason_5,
-    })//Do the rest manual for now
-    // var reasonsCode = 'reason_';
-    // for (let i = 0; i < this.reasons.length; i++) {
-    //   reasonsCode = reasonsCode+ (i+1).toString();
-    //   this.previousSprintReport.patchValue({ : previousReport.reasonsCode})
-    // }
-    // set value
+    var data
+    this.sprintFormService.getPreviousSprint('CR').subscribe((dat: any[])=>{
+      data=dat[0];
+      // console.log(data);
+      // console.log(data.scrumMasterEmail);
+      this.previousSprintNumber=(data.sprintNum)+1
+      this.sprintReport.patchValue({
+        team: data.teamID,
+        sprintStart: data.sprintStartdate,
+        sprintEnd: data.sprintEnddate,
+        smemail: data.scrumMasterEmail,
+        origPbiComp: data.planned_PBI_Completed,
+        origPbiIncomp: data.planned_PBI_NotCompleted,
+        origBugComp: data.plannedBugCompleted,
+        origBugIncomp: data.plannedBugNotCompleted,
+        addPbiComp: data.addon_PBI_completed,
+        addPbiIncomp: data.addon_PBI_not_completed,
+        addBugComp: data.addonBugCompleted,
+        addBugIncomp: data.addonBugNotCompleted,
+        R01: JSON.parse(data.reason1),
+        R02: JSON.parse(data.reason2),
+        R03: JSON.parse(data.reason3),
+        R04: JSON.parse(data.reason4),
+        R05: JSON.parse(data.reason5),
+        forecast: data.sprintCapacity,
+        planned: data.plannedCapacity,
+        actual: data.actualCapacity,
+        estimated: data.estimatedHours,
+        completed: data.completedHours,
+      })
+    }) 
+    console.log(this.sprintReport.value)
   }
 
 

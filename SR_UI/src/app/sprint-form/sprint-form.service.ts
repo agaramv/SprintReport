@@ -10,6 +10,40 @@ import { sprintReport } from '../Models/sprintReport.model';
 export class SprintFormService {
   endpoint:any = environment.apiUrl
   sprintReport: any = {};
+  test = {
+    "teamID": "CR",
+    "sprintNum": 5,
+    "sprintStartdate": "2020-05-15",
+    "sprintEnddate": "2020-05-19",
+    "scrumMasterEmail": "tet@gmail.com",
+    "planned_PBI_Completed": 1,
+    "planned_PBI_NotCompleted": 2,
+    "plannedBugCompleted": 3,
+    "plannedBugNotCompleted": 4,
+    "addon_PBI_completed": 5,
+    "addon_PBI_not_completed": 6,
+    "addonBugCompleted": 7,
+    "addonBugNotCompleted": 8,
+    "reason1": "false",
+    "reason2": "true",
+    "reason3": "false",
+    "reason4": "false",
+    "reason5": "false",
+    "reasonOther": "false",
+    "supportInd": 1,
+    "improvement": 1,
+    "newValueInd": 1,
+    "runInd": 1,
+    "growInd": 1,
+    "transformInd": 1,
+    "sprintCapacity": 11,
+    "plannedCapacity": 12,
+    "actualCapacity": 13,
+    "estimatedHours": 14,
+    "completedHours": 15,
+    "createDate": "2020-05-15T20:00:00",
+    "lastUpdDate": "2020-05-15T20:00:00"
+}
   request:Request;
   constructor(private http: HttpClient) { }
   
@@ -18,8 +52,8 @@ export class SprintFormService {
     // this.buildDates(report.sprintStart);
     this.createReport(report);
     let s = JSON.stringify(this.sprintReport)
-    console.log(s)
-    return this.http.post<any>(this.endpoint + '/sprintreport/new',s);
+    console.log(this.test)
+    return this.http.post<any>(this.endpoint + '/sprintreport/new',this.test);
     // this.saveRequests(report.otr, report.itr); //Need to get sprint number 
   }
 // Missing add pbi and bug ot complete 
@@ -91,9 +125,9 @@ export class SprintFormService {
   }
   
   //Gets previous sprint
-  getPreviousSprint(){
-    return this.http.get<any>(this.endpoint + '/sprintreport/form');
-    return 1;
+  getPreviousSprint(teamId){
+    return this.http.get<any>(this.endpoint + '/lastsprintreport/byteamID/'+teamId);
+    // return 1;
   }
 
   //Gets the form from db

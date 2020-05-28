@@ -3,7 +3,7 @@
   <mat-card id="sprintReport">
     <mat-card-header>
       <mat-card-title>
-        Sprint Report #_
+        Sprint Report #{{previousSprintNumber}}
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
@@ -13,7 +13,7 @@
           <mat-form-field>
             <mat-label>Scrum Master Email</mat-label>
             <mat-select formControlName="smemail" id="email" >
-              <mat-option value="email" *ngFor="let email of smemails">{{email}}</mat-option>
+              <mat-option value="{{email}}" *ngFor="let email of smemails">{{email}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div> 

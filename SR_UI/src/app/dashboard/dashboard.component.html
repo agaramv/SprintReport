@@ -1,0 +1,73 @@
+<div style="text-align:center" class="bg-white">
+    <h1 class="card-header bg-info">
+      Welcome to dash!
+    </h1>
+    <div class="row ml-5 ">
+      <div class="col">
+          <div class="row">
+            <h4>
+              Vertical Bar Chart
+            </h4>
+          </div>
+          <div class="row">
+                <ngx-charts-bar-vertical
+                [view]="view"
+                [scheme]="colorScheme"
+                [results]="single"
+                [gradient]="gradient"
+                [xAxis]="showXAxis"
+                [yAxis]="showYAxis"
+                [legend]="showLegend"
+                [showXAxisLabel]="showXAxisLabel"
+                [showYAxisLabel]="showYAxisLabel"
+                [xAxisLabel]="xAxisLabel"
+                [yAxisLabel]="yAxisLabel"
+                >
+                </ngx-charts-bar-vertical>
+          </div>
+        </div>
+        <div class="col">
+          <div class="row">
+            <h4>
+              Pie chart
+            </h4>
+          </div>
+          <div class="row">
+            <ngx-charts-pie-chart
+            [view]="view"
+            [scheme]="colorSchemeS"
+            [results]="rgt"
+            [legend]="showLegend"
+            [explodeSlices]="explodeSlices"
+            [labels]="showLabels"
+            [doughnut]="true"
+            [gradient]="gradient"
+            >
+            </ngx-charts-pie-chart>
+          </div>
+        </div>
+      </div>
+      <div class="row ml-5">
+        <h4>
+          Stacked Vertical Bar Chart
+        </h4>
+      </div>
+      <div class="form-group row ml-5">
+        <ngx-charts-line-chart
+        [view]="view"
+        [scheme]="colorScheme"
+        [results]="promises"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="false"
+        [showXAxisLabel]="showXAxisLabel1"
+        [showYAxisLabel]="showYAxisLabel1"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel"
+        [autoScale]="false"
+        >
+        </ngx-charts-line-chart>
+      </div>
+  
+  </div>

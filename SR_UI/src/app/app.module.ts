@@ -10,6 +10,8 @@ import { SprintFormComponent } from './sprint-form/sprint-form.component';
 import { ReportComponent } from './sprint-form/report/report.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     NavigationComponent,
     SprintFormComponent,
     ReportComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
