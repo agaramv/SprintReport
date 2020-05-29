@@ -29,4 +29,14 @@ public class OTRequestDaoImpl implements OTRequestDao{
 		return newEntity;
 	}
 
+	@Override
+	public List<OTRequestEntity> getOTRequestsOTR() {
+		return otRequestRepo.getOTRequestsOTR();
+	}
+
+	@Override
+	public List<OTRequestEntity> getOTRequestsITR() {
+		return otRequestRepo.getOTRequestsITR();
+	}
+
 }

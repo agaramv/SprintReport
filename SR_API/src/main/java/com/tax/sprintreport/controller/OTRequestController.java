@@ -30,21 +30,37 @@ public class OTRequestController {
 	}
 	
 	//********************
+	// Get OT Requests
+	//********************	
+	@GetMapping("/otrequest/otr")
+	public List<OTRequestResponse> getOTRequestsOTR(){
+		return otRequestService.getOTRequestsOTR();
+	}
+	
+	//********************
+	// Get IT Requests
+	//********************	
+	@GetMapping("/otrequest/itr")
+	public List<OTRequestResponse> getOTRequestsITR(){
+		return otRequestService.getOTRequestsITR();
+	}
+	
+	//********************
 	// Add Request
 	//*******************
 	@PostMapping("/otrequest/add")
-	public OTRequestEntity addOTRequest(@RequestBody OTRequestEntity otRequestEntity) {
-		return otRequestService.addOTRequest(otRequestEntity);
+	public OTRequestEntity addOTRequest(@RequestBody OTRequestResponse otRequestResponse) {
+		return otRequestService.addOTRequest(otRequestResponse);
 	}
 	
 	//********************
 	// Update Request
 	//*******************
 	@PutMapping("/otrequest/update")
-	public OTRequestEntity updateOTRequest(@RequestBody OTRequestEntity otRequestEntity) {
+	public OTRequestEntity updateOTRequest(@RequestBody OTRequestResponse otRequestResponse) {
 		//Call the same add request function to update the information	
 		//the difference is using put request
-		return otRequestService.addOTRequest(otRequestEntity);
+		return otRequestService.addOTRequest(otRequestResponse);
 	}
 
 }

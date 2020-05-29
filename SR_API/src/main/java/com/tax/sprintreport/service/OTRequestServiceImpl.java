@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.tax.sprintreport.dao.OTRequestDao;
 import com.tax.sprintreport.entity.OTRequestEntity;
+import com.tax.sprintreport.entity.OTRequestEntityKey;
 import com.tax.sprintreport.param.OTRequestResponse;
 
 
@@ -45,34 +46,42 @@ public class OTRequestServiceImpl implements OTRequestService{
 		return OTRequestResponse;
 	}
 	
-	/*****Construct Response with choice******/
-	
-//	private List<OTRequestResponse> buildOTRequestResponseAll(List<OTRequestEntity> OTRequestEntity, String category){
-//		
-//		List<OTRequestResponse> OTRequestResponse = new ArrayList<OTRequestResponse>();
-//
-//		//Build a flat Jason object to send to client (avoid sending composite json object to client)
-//		OTRequestResponse = OTRequestEntity.stream().map(
-//				OTRequest -> new OTRequestResponse(
-//						OTRequest.getOTRequestEntityKey().getCategory(),
-//						OTRequest.getOTRequestEntityKey().getRequestID(),
-//						OTRequest.getRequestDesc(),
-//						OTRequest.getOutcome(),
-//						OTRequest.getStatus()
-//						)).collect(Collectors.toList());
-//		System.out.println(OTRequestResponse);
-//		return OTRequestResponse;
-//	}
-
 	@Override
-	public OTRequestEntity addOTRequest(OTRequestEntity otRequestEntity) {
+	public OTRequestEntity addOTRequest(OTRequestResponse otRequestResponse) {
+		
+		OTRequestEntityKey otRequestEntityKey = new OTRequestEntityKey(
+				otRequestResponse.getCategory(),
+				otRequestResponse.getRequest_id()
+				);
+		
+		OTRequestEntity otRequestEntity= new OTRequestEntity(
+				otRequestEntityKey,
+				otRequestResponse.getRequestShortDesc(),
+				otRequestResponse.getRequestDesc(),
+				otRequestResponse.getDateStarted(),
+				otRequestResponse.getDateCompleted(),
+				otRequestResponse.getDateImplemented(),
+				otRequestResponse.getOutcome(),
+				otRequestResponse.getStatus()
+				);
+				
 		return otRequestDao.addOTRequest(otRequestEntity);
 	}
 
 	@Override
 	public List<OTRequestResponse> getOTRequestsAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return buildOTRequestResponse(otRequestDao.getOTRequestsAll());
 	}
+
+	@Override
+	public List<OTRequestResponse> getOTRequestsOTR() {
+		return buildOTRequestResponse(otRequestDao.getOTRequestsOTR());
+	}
+
+	@Override
+	public List<OTRequestResponse> getOTRequestsITR() {
+		return buildOTRequestResponse(otRequestDao.getOTRequestsITR());
+	}
+	
 
 }

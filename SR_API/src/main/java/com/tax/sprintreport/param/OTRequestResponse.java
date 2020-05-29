@@ -4,13 +4,13 @@ import java.time.LocalDate;
 
 public class OTRequestResponse {
 	
-	private String Category;
+	private String category;
 	private String request_id; 
 	private String requestShortDesc;
 	private String requestDesc;
 	private LocalDate dateStarted;
 	private LocalDate dateCompleted;
-	private LocalDate dataImplemented;
+	private LocalDate dateImplemented;
 	private String outcome;
 	private String status;
 	
@@ -22,27 +22,27 @@ public class OTRequestResponse {
 
 
 	public OTRequestResponse(String category, String request_id, String requestShortDesc, String requestDesc,
-			LocalDate dateStarted, LocalDate dateCompleted, LocalDate dataImplemented, String outcome, String status) {
+			LocalDate dateStarted, LocalDate dateCompleted, LocalDate dateImplemented, String outcome, String status) {
 		super();
-		Category = category;
+		this.category = category;
 		this.request_id = request_id;
 		this.requestShortDesc = requestShortDesc;
 		this.requestDesc = requestDesc;
 		this.dateStarted = dateStarted;
 		this.dateCompleted = dateCompleted;
-		this.dataImplemented = dataImplemented;
+		this.dateImplemented = dateImplemented;
 		this.outcome = outcome;
 		this.status = status;
 	}
 
 
 	public String getCategory() {
-		return Category;
+		return this.category;
 	}
 
 
 	public void setCategory(String category) {
-		Category = category;
+		this.category = category;
 	}
 
 
@@ -96,13 +96,13 @@ public class OTRequestResponse {
 	}
 
 
-	public LocalDate getDataImplemented() {
-		return dataImplemented;
+	public LocalDate getDateImplemented() {
+		return dateImplemented;
 	}
 
 
-	public void setDataImplemented(LocalDate dataImplemented) {
-		this.dataImplemented = dataImplemented;
+	public void setDateImplemented(LocalDate dateImplemented) {
+		this.dateImplemented = dateImplemented;
 	}
 
 

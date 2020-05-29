@@ -13,7 +13,7 @@
           <mat-form-field>
             <mat-label>Scrum Master Email</mat-label>
             <mat-select formControlName="smemail" id="email" >
-              <mat-option value="{{email}}" *ngFor="let email of smemails">{{email}}</mat-option>
+              <mat-option value="{{smemail.email}}" *ngFor="let smemail of smemails">{{smemail.email}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div> 
@@ -168,7 +168,7 @@
                           (+{{otrSelect.value.length - 1}} {{otrSelect.value?.length === 2 ? 'other' : 'others'}})
                         </span>
                       </mat-select-trigger>
-                      <mat-option *ngFor="let otr of otrList" [value]="otr">{{otr}}</mat-option>
+                      <mat-option *ngFor="let otr of otrList" [value]="otr.request_id">{{otr.request_id}}</mat-option>
                     </mat-select>
                   </mat-form-field>
                   <p>OTRs Selected: <span>
@@ -189,7 +189,7 @@
                           (+{{itrSelect.value.length - 1}} {{itrSelect.value?.length === 2 ? 'other' : 'others'}})
                         </span>
                       </mat-select-trigger>
-                      <mat-option *ngFor="let itr of itrList" [value]="itr">{{itr}}</mat-option>
+                      <mat-option *ngFor="let itr of itrList" [value]="itr.request_id">{{itr.request_id}}</mat-option>
                     </mat-select>
                   </mat-form-field>
                   <p>ITRs Selected: <span>
@@ -225,9 +225,6 @@
                     </tbody>
                   </table>
                 </div>
-                <!-- <mat-divider [vertical]=true></mat-divider> -->
-              <!-- </div>
-              <div class="row justify-content-center"> -->
                 <div class="col-xl-6">
                   <!-- Sprint Hours -->
                   <p>Sprint Hours</p>

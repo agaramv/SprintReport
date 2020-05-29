@@ -94,34 +94,46 @@ export class SprintFormService {
     console.log(this.sprintReport);
   }
 
-  saveRequests(otrs, itrs){
-    var request: Request;
-      // console.log("Norm "+ this.request)
-    otrs.forEach(element => {
-      this.request = {
-        team_id: 'team',
-        sprint_num:3,
-        category: 'otr',
-        request_id: element
-      };
-      //Save Otrs
-    });
-    itrs.forEach(element => {
-      this.request = {
-        team_id: 'team',
-        sprint_num:3,
-        category: 'itr',
-        request_id: element
-      };
-      //Save itrs
-    });
-  }
+  // saveRequests(otrs, itrs){
+  //   var request: Request;
+  //     // console.log("Norm "+ this.request)
+  //   otrs.forEach(element => {
+  //     this.request = {
+  //       team_id: 'team',
+  //       sprint_num:3,
+  //       category: 'otr',
+  //       request_id: element
+  //     };
+  //     //Save Otrs
+  //   });
+  //   itrs.forEach(element => {
+  //     this.request = {
+  //       team_id: 'team',
+  //       sprint_num:3,
+  //       category: 'itr',
+  //       request_id: element
+  //     };
+  //     //Save itrs
+  //   });
+  // }
 
   buildDates(date){
     var newDate = '';
     newDate= date.getFullYear()+'-'+ this.make2Digit(date.getMonth())+'-'+this.make2Digit(date.getDate());
     // console.log(newDate);
     return newDate
+  }
+
+  getRequests(){
+    return this.http.get<any>(this.endpoint + '/otrequest/all');
+  }
+
+  getITRequests(){
+    return this.http.get<any>(this.endpoint + '/otrequest/itr');
+  }
+
+  getOTRequests(){
+    return this.http.get<any>(this.endpoint + '/otrequest/otr');
   }
   
   //Gets previous sprint
@@ -143,6 +155,11 @@ export class SprintFormService {
   //Gets reasons from db
   getReasons(){
     return this.http.get<any>(this.endpoint + '/reason/all');
+  }
+
+  //Get scrum master emails
+  getEmails(){
+    return this.http.get<any>(this.endpoint + '/scrummaster/email/all');
   }
 
   make2Digit(val){

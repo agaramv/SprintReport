@@ -12,17 +12,15 @@ import { sprintReport } from 'src/app/Models/sprintReport.model';
 })
 export class ReportComponent implements OnInit {
   submitted:boolean = false;
-  otr = new FormControl();
-  otrList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  otrList: Request[];
   otrSelected: string[];
-  itr = new FormControl();
-  itrList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  itrList: Request[];
   previous = false;
   sprintCategory:String[] = ['Forecast', 'Planned','Actual']
   sprintHours:String[]=['Estimated','Completed']
   reasons:Reason[]
   teams:Team[]
-  smemails:any[] = ['vidur@gmail.com','cow@gmail.com','test@gmail.com']
+  smemails:any[];
   otherEnabled=false;
   sprintNumber;
   previousSprintNumber;
@@ -64,8 +62,10 @@ export class ReportComponent implements OnInit {
   ngOnInit(): void {
     this.getReasons();
     this.getTeams();
+    this.getEmails();
+    this.getOTITRequests()
     this.addSprintCategoriesHours(this.sprintCategory,this.sprintHours);
-    this.fillPreviousSprintReport()
+    // this.fillPreviousSprintReport()
   }
 
   fillPreviousSprintReport(){
@@ -114,12 +114,6 @@ export class ReportComponent implements OnInit {
   }
 
   addReasons(reasons: any[]){
-    // var title = "reason_";
-    // for (let index = 0; index < reasons.length; index++) {
-    //   title=title+(index+1).toString()
-    //   this.sprintReport.addControl(title, new FormControl(false));
-    //   this.previousSprintReport.addControl(title, new FormControl(false));
-    // }
     reasons.forEach(element => {
       this.sprintReport.addControl(element.code, new FormControl(false));
       this.previousSprintReport.addControl(element.code, new FormControl(false));
@@ -131,6 +125,21 @@ export class ReportComponent implements OnInit {
       // console.log(data);
       this.teams = data;
       // console.log(this.teams)
+    })
+  }
+
+  getEmails(){
+    this.sprintFormService.getEmails().subscribe((data: any[])=>{
+      this.smemails = data;
+    })
+  }
+
+  getOTITRequests(){
+    this.sprintFormService.getOTRequests().subscribe((data: Request[])=>{
+      this.otrList=data;
+    })
+    this.sprintFormService.getITRequests().subscribe((data: Request[])=>{
+      this.itrList=data;
     })
   }
 

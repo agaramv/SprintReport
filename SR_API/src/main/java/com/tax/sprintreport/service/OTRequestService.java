@@ -10,6 +10,12 @@ public interface OTRequestService {
 	//Get OT Requests that are Active
 	public List<OTRequestResponse> getOTRequestsAll();
 	
+	//Get OTRs 
+	public List<OTRequestResponse> getOTRequestsOTR();
+
+	//Get ITRs 
+	public List<OTRequestResponse> getOTRequestsITR();
+	
 	//Add ot request
-	public OTRequestEntity addOTRequest(OTRequestEntity otRequestEntity);
+	public OTRequestEntity addOTRequest(OTRequestResponse otRequestResponse);
 }
