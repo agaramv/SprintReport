@@ -164,7 +164,7 @@ export class ReportComponent implements OnInit {
   //Captures the form data
   onSubmit() {
     console.log(this.sprintReport.value)
-    // this.sprintFormService.saveSprintReport(this.sprintReport.value);
+    this.sprintFormService.saveSprintReport(this.sprintReport.value);
   }
 
   // Get Requests from form

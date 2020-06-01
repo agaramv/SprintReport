@@ -14,8 +14,8 @@ public class SprintReportResponse {
 	  private int planned_PBI_NotCompleted;
 	  private int plannedBugCompleted;
 	  private int plannedBugNotCompleted;
-	  private int addon_PBI_completed;
-	  private int addon_PBI_not_completed;
+	  private int addon_PBI_Completed;
+	  private int addon_PBI_NotCompleted;
 	  private int addonBugCompleted;
 	  private int addonBugNotCompleted;
 	  private String reason1;
@@ -24,12 +24,12 @@ public class SprintReportResponse {
 	  private String reason4;
 	  private String reason5;
 	  private String reasonOther;
-	  private int supportInd;
-	  private int improvement;
-	  private int newValueInd;
-	  private int runInd;
-	  private int growInd;
-	  private int transformInd;
+	  private int supportPBI;
+	  private int supportBug;
+	  private int newValuePBI;
+	  private int newValueBug;
+	  private int improvementPBI;
+	  private int improvementBug;
 	  private int sprintCapacity;
 	  private int plannedCapacity;
 	  private int actualCapacity;
@@ -46,10 +46,10 @@ public class SprintReportResponse {
 
 	public SprintReportResponse(String teamID, int sprintNum, LocalDate sprintStartdate, LocalDate sprintEnddate,
 			String scrumMasterEmail, int planned_PBI_Completed, int planned_PBI_NotCompleted, int plannedBugCompleted,
-			int plannedBugNotCompleted, int addon_PBI_completed, int addon_PBI_not_completed, int addonBugCompleted,
+			int plannedBugNotCompleted, int addon_PBI_Completed, int addon_PBI_NotCompleted, int addonBugCompleted,
 			int addonBugNotCompleted, String reason1, String reason2, String reason3, String reason4, String reason5,
-			String reasonOther, int supportInd, int improvement, int newValueInd, int runInd, int growInd,
-			int transformInd, int sprintCapacity, int plannedCapacity, int actualCapacity, int estimatedHours,
+			String reasonOther, int supportPBI, int supportBug, int newValuePBI, int newValueBug, int improvementPBI,
+			int improvementBug, int sprintCapacity, int plannedCapacity, int actualCapacity, int estimatedHours,
 			int completedHours, LocalDateTime createDate, LocalDateTime lastUpdDate) {
 		super();
 		this.teamID = teamID;
@@ -61,8 +61,8 @@ public class SprintReportResponse {
 		this.planned_PBI_NotCompleted = planned_PBI_NotCompleted;
 		this.plannedBugCompleted = plannedBugCompleted;
 		this.plannedBugNotCompleted = plannedBugNotCompleted;
-		this.addon_PBI_completed = addon_PBI_completed;
-		this.addon_PBI_not_completed = addon_PBI_not_completed;
+		this.addon_PBI_Completed = addon_PBI_Completed;
+		this.addon_PBI_NotCompleted = addon_PBI_NotCompleted;
 		this.addonBugCompleted = addonBugCompleted;
 		this.addonBugNotCompleted = addonBugNotCompleted;
 		this.reason1 = reason1;
@@ -71,12 +71,12 @@ public class SprintReportResponse {
 		this.reason4 = reason4;
 		this.reason5 = reason5;
 		this.reasonOther = reasonOther;
-		this.supportInd = supportInd;
-		this.improvement = improvement;
-		this.newValueInd = newValueInd;
-		this.runInd = runInd;
-		this.growInd = growInd;
-		this.transformInd = transformInd;
+		this.supportPBI = supportPBI;
+		this.supportBug = supportBug;
+		this.newValuePBI = newValuePBI;
+		this.newValueBug = newValueBug;
+		this.improvementPBI = improvementPBI;
+		this.improvementBug = improvementBug;
 		this.sprintCapacity = sprintCapacity;
 		this.plannedCapacity = plannedCapacity;
 		this.actualCapacity = actualCapacity;
@@ -176,24 +176,23 @@ public class SprintReportResponse {
 		this.plannedBugNotCompleted = plannedBugNotCompleted;
 	}
 
-
-	public int getAddon_PBI_completed() {
-		return addon_PBI_completed;
+	public int getAddon_PBI_Completed() {
+		return addon_PBI_Completed;
 	}
 
 
-	public void setAddon_PBI_completed(int addon_PBI_completed) {
-		this.addon_PBI_completed = addon_PBI_completed;
+	public void setAddon_PBI_Completed(int addon_PBI_Completed) {
+		this.addon_PBI_Completed = addon_PBI_Completed;
 	}
 
 
-	public int getAddon_PBI_not_completed() {
-		return addon_PBI_not_completed;
+	public int getAddon_PBI_NotCompleted() {
+		return addon_PBI_NotCompleted;
 	}
 
 
-	public void setAddon_PBI_not_completed(int addon_PBI_not_completed) {
-		this.addon_PBI_not_completed = addon_PBI_not_completed;
+	public void setAddon_PBI_NotCompleted(int addon_PBI_NotCompleted) {
+		this.addon_PBI_NotCompleted = addon_PBI_NotCompleted;
 	}
 
 
@@ -277,63 +276,63 @@ public class SprintReportResponse {
 	}
 
 
-	public int getSupportInd() {
-		return supportInd;
+	public int getSupportPBI() {
+		return supportPBI;
 	}
 
 
-	public void setSupportInd(int supportInd) {
-		this.supportInd = supportInd;
+	public void setSupportPBI(int supportPBI) {
+		this.supportPBI = supportPBI;
 	}
 
 
-	public int getImprovement() {
-		return improvement;
+	public int getSupportBug() {
+		return supportBug;
 	}
 
 
-	public void setImprovement(int improvement) {
-		this.improvement = improvement;
+	public void setSupportBug(int supportBug) {
+		this.supportBug = supportBug;
 	}
 
 
-	public int getNewValueInd() {
-		return newValueInd;
+	public int getNewValuePBI() {
+		return newValuePBI;
 	}
 
 
-	public void setNewValueInd(int newValueInd) {
-		this.newValueInd = newValueInd;
+	public void setNewValuePBI(int newValuePBI) {
+		this.newValuePBI = newValuePBI;
 	}
 
 
-	public int getRunInd() {
-		return runInd;
+	public int getNewValueBug() {
+		return newValueBug;
 	}
 
 
-	public void setRunInd(int runInd) {
-		this.runInd = runInd;
+	public void setNewValueBug(int newValueBug) {
+		this.newValueBug = newValueBug;
 	}
 
 
-	public int getGrowInd() {
-		return growInd;
+	public int getImprovementPBI() {
+		return improvementPBI;
 	}
 
 
-	public void setGrowInd(int growInd) {
-		this.growInd = growInd;
+	public void setImprovementPBI(int improvementPBI) {
+		this.improvementPBI = improvementPBI;
 	}
 
 
-	public int getTransformInd() {
-		return transformInd;
+	public int getImprovementBug() {
+		return improvementBug;
 	}
 
 
-	public void setTransformInd(int transformInd) {
-		this.transformInd = transformInd;
+	public void setImprovementBug(int improvementBug) {
+		this.improvementBug = improvementBug;
 	}
 
 
@@ -404,6 +403,6 @@ public class SprintReportResponse {
 
 	public void setLastUpdDate(LocalDateTime lastUpdDate) {
 		this.lastUpdDate = lastUpdDate;
-	}	  
-	  
+	}
+	
 }
