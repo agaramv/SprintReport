@@ -52,8 +52,8 @@ export class SprintFormService {
     // this.buildDates(report.sprintStart);
     this.createReport(report);
     let s = JSON.stringify(this.sprintReport)
-    console.log(this.test)
-    return this.http.post<any>(this.endpoint + '/sprintreport/new',this.test);
+    console.log(s);
+    return this.http.post<any>(this.endpoint + '/sprintreport/new',s);
     // this.saveRequests(report.otr, report.itr); //Need to get sprint number 
   }
 // Missing add pbi and bug ot complete 

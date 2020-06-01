@@ -232,13 +232,13 @@
                     <thead>
                       <tr class="d-flex">
                         <th >Types</th>
-                        <th *ngFor="let hour of sprintHours" class="col-3">{{hour}}</th>
+                        <th *ngFor="let hour of sprintHours" class="col">{{hour}}</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr class="d-flex">
                         <td>Hours</td>
-                        <td *ngFor="let hour of sprintHours" class="col-3">
+                        <td *ngFor="let hour of sprintHours" class="col">
                           <!-- Need to Assemble form conponents involved in ngfor-created form -->
                           <mat-form-field class="completion">
                             <input matInput type="number" placeholder="#" formControlName="{{hour | lowercase}}">

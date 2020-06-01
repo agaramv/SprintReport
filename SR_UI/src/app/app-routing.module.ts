@@ -7,7 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 const routes: Routes = [
   { path: '', redirectTo: '/form/report', pathMatch: 'full' },
   { path: 'form', component: SprintFormComponent, children:[
-    { path: 'report', component: ReportComponent}
+    { path: 'report', component: ReportComponent},
   ]},
   { path: 'dashboard', component: DashboardComponent}
 ];
