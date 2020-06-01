@@ -38,6 +38,12 @@ export class ReportComponent implements OnInit {
     addPbiIncomp: [''],
     addBugComp: [''],
     addBugIncomp: [''],
+    supportPbi: [''],
+    newValuePbi: [''],
+    improvementsPbi: [''],
+    supportBug: [''],
+    newValueBug: [''],
+    improvementsBug: [''],
     otr: [],
     itr: [],
   });
@@ -157,11 +163,8 @@ export class ReportComponent implements OnInit {
 
   //Captures the form data
   onSubmit() {
-    //need to change the report.value.sprintEnd and Start to the data format we want
-    let form = JSON.stringify(this.sprintReport.value);
-    //save form api
     console.log(this.sprintReport.value)
-    this.sprintFormService.saveSprintReport(this.sprintReport.value);
+    // this.sprintFormService.saveSprintReport(this.sprintReport.value);
   }
 
   // Get Requests from form
