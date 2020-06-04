@@ -47,22 +47,6 @@ export class ReportComponent implements OnInit {
     otr: [],
     itr: [],
   });
-  previousSprintReport = this.fb.group({
-    team_id: [''],
-    sprintStart: [''],
-    sprintEnd: [''],
-    smemail: [''],
-    origPbiComp: [''],
-    origPbiIncomp: [''],
-    origBugComp: [''],
-    origBugIncomp: [''],
-    addPbiComp: [''],
-    addPbiIncomp: [''],
-    addBugComp: [''],
-    addBugIncomp: [''],
-    otr: [],
-    itr: [],
-  });
   
   constructor(private sprintFormService: SprintFormService, private fb:FormBuilder) { }
   ngOnInit(): void {
@@ -73,15 +57,16 @@ export class ReportComponent implements OnInit {
     this.addSprintCategoriesHours(this.sprintCategory,this.sprintHours);
     // this.fillPreviousSprintReport()
   }
-
+  
+  //Need a function for the moment a team is selected the previousSprint for the team will be called and fill in some info
+  //Could use fill previous sprint with parameters
   fillPreviousSprintReport(){
     // Need to get past sprints otr/itr requests
     var data
-    this.sprintFormService.getPreviousSprint('CR').subscribe((dat: any[])=>{
+    this.sprintFormService.getPreviousSprint(this.team.value).subscribe((dat: any[])=>{
       data=dat[0];
-      // console.log(data);
-      // console.log(data.scrumMasterEmail);
-      this.previousSprintNumber=(data.sprintNum)+1
+      this.sprintNumber=(data.sprintNum)+1
+      this.previousSprintNumber=data.sprintNum;
       this.sprintReport.patchValue({
         team: data.teamID,
         sprintStart: data.sprintStartdate,
@@ -107,7 +92,7 @@ export class ReportComponent implements OnInit {
         completed: data.completedHours,
       })
     }) 
-    console.log(this.sprintReport.value)
+    console.log()
   }
 
 
@@ -122,7 +107,7 @@ export class ReportComponent implements OnInit {
   addReasons(reasons: any[]){
     reasons.forEach(element => {
       this.sprintReport.addControl(element.code, new FormControl(false));
-      this.previousSprintReport.addControl(element.code, new FormControl(false));
+      // this.previousSprintReport.addControl(element.code, new FormControl(false));
     });
   }
 
@@ -157,7 +142,7 @@ export class ReportComponent implements OnInit {
 
     hours.forEach(element => {
       this.sprintReport.addControl(element.toLowerCase(), new FormControl(''));
-      this.previousSprintReport.addControl(element.toLowerCase(), new FormControl(''));
+      // this.previousSprintReport.addControl(element.toLowerCase(), new FormControl(''));
     });
   }
 
@@ -168,6 +153,7 @@ export class ReportComponent implements OnInit {
   }
 
   // Get Requests from form
+  get team() {return this.sprintReport.get('team')}
   get origPbiComp(): any {return Number(this.sprintReport.get('origPbiComp').value)}
   get origPbiIncomp(): any {return Number(this.sprintReport.get('origPbiIncomp').value)}
   get origBugComp(): any {return Number(this.sprintReport.get('origBugComp').value)}

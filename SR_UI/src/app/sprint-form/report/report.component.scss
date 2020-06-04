@@ -1,13 +1,16 @@
-#sprintReport{
-    width:70%;
-    margin-left: 15%;
-    margin-right: 15%;
-}
-
 #form{
-    margin-left: 18px;
+    // width:70%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
+}
 .plus1Selection{
     opacity: 0.75;
     font-size: 0.75em;
@@ -22,6 +25,11 @@
     flex-wrap: wrap;
     justify-content: left;
     flex-flow: row;
+}
+
+.card{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .category{

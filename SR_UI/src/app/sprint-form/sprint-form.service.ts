@@ -138,7 +138,7 @@ export class SprintFormService {
   }
   
   //Gets previous sprint
-  getPreviousSprint(teamId){
+  getPreviousSprint(teamId, sprintNum){
     return this.http.get<any>(this.endpoint + '/lastsprintreport/byteamID/'+teamId);
     // return 1;
   }
