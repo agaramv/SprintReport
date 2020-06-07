@@ -6,7 +6,10 @@
       <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <div class="card-title">Sprint Report #_</div>
+            <div class="card-title">
+              <h3 *ngIf="!previous">Sprint Report #{{sprintNumber}}</h3>
+              <h3 *ngIf="previous">Sprint Report #{{previousSprintNumber}}</h3>
+            </div>
             <!-- Team/Scrum Master Email -->
             <div class="col form-inline">
               <mat-form-field>
@@ -49,9 +52,9 @@
         <div class="card">
           <div class="card-header">
             <div class="left">
-              <button mat-button>Newest</button>
-              <button mat-button (click)="fillPreviousSprintReport()">Previous</button>
-              <button mat-button>Next</button>
+              <button mat-button type="button" (click)="fillSprintReport('new')">Newest</button>
+              <button mat-button type="button" (click)="fillSprintReport('previous')">Previous</button>
+              <button mat-button type="button" (click)="fillSprintReport('next')" [disabled]="!previous">Next</button>
             </div>
             <div class="right">
               <button mat-button>Download</button>

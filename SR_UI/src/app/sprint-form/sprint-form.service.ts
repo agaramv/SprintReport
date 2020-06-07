@@ -10,40 +10,7 @@ import { sprintReport } from '../Models/sprintReport.model';
 export class SprintFormService {
   endpoint:any = environment.apiUrl
   sprintReport: any;
-  test = {
-    "teamID": "CR",
-    "sprintNum": 5,
-    "sprintStartdate": "2020-05-15",
-    "sprintEnddate": "2020-05-19",
-    "scrumMasterEmail": "tet@gmail.com",
-    "planned_PBI_Completed": 1,
-    "planned_PBI_NotCompleted": 2,
-    "plannedBugCompleted": 3,
-    "plannedBugNotCompleted": 4,
-    "addon_PBI_completed": 5,
-    "addon_PBI_not_completed": 6,
-    "addonBugCompleted": 7,
-    "addonBugNotCompleted": 8,
-    "reason1": "false",
-    "reason2": "true",
-    "reason3": "false",
-    "reason4": "false",
-    "reason5": "false",
-    "reasonOther": "false",
-    "supportInd": 1,
-    "improvement": 1,
-    "newValueInd": 1,
-    "runInd": 1,
-    "growInd": 1,
-    "transformInd": 1,
-    "sprintCapacity": 11,
-    "plannedCapacity": 12,
-    "actualCapacity": 13,
-    "estimatedHours": 14,
-    "completedHours": 15,
-    "createDate": "2020-05-15T20:00:00",
-    "lastUpdDate": "2020-05-15T20:00:00"
-}
+  
   request:Request;
   constructor(private http: HttpClient) { }
   
@@ -59,9 +26,9 @@ export class SprintFormService {
   createReport(report){ 
     var sprintReport: any = {};
     sprintReport.teamID=report.team;
-    sprintReport.sprintNum=5;
-    sprintReport.sprintStartdate="2020-05-15";
-    sprintReport.sprintEnddate="2020-05-16";
+    sprintReport.sprintNum=report.sprintNum;
+    sprintReport.sprintStartdate=report.sprintStartdate;
+    sprintReport.sprintEnddate=report.sprintEnddate;
     sprintReport.scrumMasterEmail=report.smemail;
     sprintReport.planned_PBI_Completed=report.origPbiComp
     sprintReport.planned_PBI_NotCompleted=report.origPbiIncomp
@@ -137,10 +104,14 @@ export class SprintFormService {
     return this.http.get<any>(this.endpoint + '/otrequest/otr');
   }
   
-  //Gets previous sprint
-  getPreviousSprint(teamId, sprintNum){
+  //Gets previous sprint with only team
+  getPreviousSprintTeam(teamId){
     return this.http.get<any>(this.endpoint + '/lastsprintreport/byteamID/'+teamId);
-    // return 1;
+  }
+
+  //Gets previous sprint with team and sprint number needed
+  getPreviousSprint(teamId, sprintNum){
+    return this.http.get<any>(this.endpoint + '/sprintreport/byteam/'+teamId+'/sprintnum/'+sprintNum);
   }
 
   //Gets the form from db
