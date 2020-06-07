@@ -9,57 +9,54 @@ import { sprintReport } from '../Models/sprintReport.model';
 })
 export class SprintFormService {
   endpoint:any = environment.apiUrl
-  sprintReport: any;
+  sprintReport: any = {};
   
   request:Request;
   constructor(private http: HttpClient) { }
   
   //Saves the sprint report info
   saveSprintReport(report){
-    // this.buildDates(report.sprintStart);
-    
-    var s = JSON.stringify(this.createReport(report))
-    console.log(s);
-    return this.http.post<any>(this.endpoint + '/sprintreport/new',s);
+    this.buildDates(report.sprintStart); 
+    return this.http.post<any>(this.endpoint+'/sprintreport/new',this.createReport(report))
     // this.saveRequests(report.otr, report.itr); //Need to get sprint number 
   }
+
   createReport(report){ 
-    var sprintReport: any = {};
-    sprintReport.teamID=report.team;
-    sprintReport.sprintNum=report.sprintNum;
-    sprintReport.sprintStartdate=report.sprintStartdate;
-    sprintReport.sprintEnddate=report.sprintEnddate;
-    sprintReport.scrumMasterEmail=report.smemail;
-    sprintReport.planned_PBI_Completed=report.origPbiComp
-    sprintReport.planned_PBI_NotCompleted=report.origPbiIncomp
-    sprintReport.plannedBugCompleted=report.origBugComp
-    sprintReport.plannedBugNotCompleted=report.origBugIncomp
-    sprintReport.addon_PBI_Completed=report.addPbiComp
-    sprintReport.addon_PBI_NotCompleted=report.addPbiIncomp
-    sprintReport.addonBugCompleted=report.addBugComp
-    sprintReport.addonBugNotCompleted=report.addBugIncomp
-    sprintReport.reason1=report.R01
-    sprintReport.reason2=report.R02
-    sprintReport.reason3=report.R03
-    sprintReport.reason4=report.R04
-    sprintReport.reason5=report.R05
-    sprintReport.reasonOther='';
-    sprintReport.supportPBI=report.supportPbi
-    sprintReport.supportBug=report.supportBug
-    sprintReport.newValuePBI=report.newValuePbi
-    sprintReport.newValueBug=report.newValueBug
-    sprintReport.improvementPBI=report.improvementsPbi
-    sprintReport.improvementBug=report.improvementsBug
-    sprintReport.sprintCapacity=report.forecast;
-    sprintReport.plannedCapacity=report.planned;
-    sprintReport.actualCapacity=report.actual;
-    sprintReport.estimatedHours=report.estimated;
-    sprintReport.completedHours=report.completed;
-    sprintReport.createDate="2020-05-15T20:00:00";
-    sprintReport.lastUpdDate="2020-05-15T20:00:00";
+    this.sprintReport.teamID=report.team;
+    this.sprintReport.sprintNum=report.sprintNum;
+    this.sprintReport.sprintStartdate=this.buildDates(report.sprintStart);
+    this.sprintReport.sprintEnddate=this.buildDates(report.sprintEnd);
+    this.sprintReport.scrumMasterEmail=report.smemail;
+    this.sprintReport.planned_PBI_Completed=report.origPbiComp
+    this.sprintReport.planned_PBI_NotCompleted=report.origPbiIncomp
+    this.sprintReport.plannedBugCompleted=report.origBugComp
+    this.sprintReport.plannedBugNotCompleted=report.origBugIncomp
+    this.sprintReport.addon_PBI_Completed=report.addPbiComp
+    this.sprintReport.addon_PBI_NotCompleted=report.addPbiIncomp
+    this.sprintReport.addonBugCompleted=report.addBugComp
+    this.sprintReport.addonBugNotCompleted=report.addBugIncomp
+    this.sprintReport.reason1=report.R01
+    this.sprintReport.reason2=report.R02
+    this.sprintReport.reason3=report.R03
+    this.sprintReport.reason4=report.R04
+    this.sprintReport.reason5=report.R05
+    this.sprintReport.reasonOther='';
+    this.sprintReport.supportPBI=report.supportPbi
+    this.sprintReport.supportBug=report.supportBug
+    this.sprintReport.newValuePBI=report.newValuePbi
+    this.sprintReport.newValueBug=report.newValueBug
+    this.sprintReport.improvementPBI=report.improvementsPbi
+    this.sprintReport.improvementBug=report.improvementsBug
+    this.sprintReport.sprintCapacity=report.forecast;
+    this.sprintReport.plannedCapacity=report.planned;
+    this.sprintReport.actualCapacity=report.actual;
+    this.sprintReport.estimatedHours=report.estimated;
+    this.sprintReport.completedHours=report.completed;
+    this.sprintReport.createDate="2020-05-15T20:00:00";
+    this.sprintReport.lastUpdDate="2020-05-15T20:00:00";
     console.log("Create")
-    console.log(sprintReport);
-    return sprintReport;
+    console.log(this.sprintReport);
+    return this.sprintReport;
   }
 
   // saveRequests(otrs, itrs){
@@ -87,8 +84,8 @@ export class SprintFormService {
 
   buildDates(date){
     var newDate = '';
-    newDate= date.getFullYear()+'-'+ this.make2Digit(date.getMonth())+'-'+this.make2Digit(date.getDate());
-    // console.log(newDate);
+    newDate= date.getFullYear()+'-'+ this.make2Digit(date.getMonth()+1)+'-'+this.make2Digit(date.getDate());
+    console.log(newDate);
     return newDate
   }
 

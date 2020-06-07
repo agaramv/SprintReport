@@ -5,17 +5,20 @@ import { Reason } from 'src/app/Models/reasons.model';
 import { Team } from 'src/app/Models/team.model';
 import { sprintReport } from 'src/app/Models/sprintReport.model';
 import { Subscription } from 'rxjs';
+import { repeatWhen } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-report',
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.scss']
 })
-export class ReportComponent implements OnInit, OnDestroy {
+export class ReportComponent implements OnInit {
   submitted:boolean = false;
   otrList: Request[];
   itrList: Request[];
   previous = false;
+  firstSprint = false;
   sprintCategory:String[] = ['Forecast', 'Planned','Actual']
   sprintHours:String[]=['Estimated','Completed']
   reasons:Reason[]
@@ -49,7 +52,7 @@ export class ReportComponent implements OnInit, OnDestroy {
     itr: [],
   });
   
-  constructor(private sprintFormService: SprintFormService, private fb:FormBuilder) { }
+  constructor(private sprintFormService: SprintFormService, private fb:FormBuilder, private http: HttpClient) { }
   ngOnInit(): void {
     this.getReasons();
     this.getTeams();
@@ -59,22 +62,23 @@ export class ReportComponent implements OnInit, OnDestroy {
     this.checkingTeamValue()
   }
 
-  ngOnDestroy() {
-    // this.subscription.unsubscribe()
-}
-
   checkingTeamValue(){
-    this.subscr = this.sprintReport.get('team').valueChanges.subscribe(data => {
+    //Need to change so that when someone changes the team the subscription won't end
+    this.sprintReport.get('team').valueChanges
+    .pipe(repeatWhen(()=>{
+      this.teamVal!=
+    }))
+    .subscribe(data => {
       this.fillSprintReport('start')
     })    
   }  
-  //Need a function for the moment a team is selected the previousSprint for the team will be called and fill in some info
-  //Could use fill previous sprint with parameters
+ 
   fillSprintReport(callType){
     // Need to get past sprints otr/itr requests
     let data
+    //Start is for intializing the sprint number and populating the smemail when the user selects a team
     if(callType=='start'){
-      //Add something with past otrs
+      //Add previous sprint otrs/itrs
       this.sprintFormService.getPreviousSprintTeam(this.teamVal.value).subscribe((dat: any[])=>{
         data=dat[0];
         this.sprintNumber=(data.sprintNum)+1
@@ -85,14 +89,19 @@ export class ReportComponent implements OnInit, OnDestroy {
       }) 
       this.subscr.unsubscribe();
     }
+    //Previous changes the form elements to the previous Sprint Report of the team selected
     if(callType=='previous'){
-      this.previous=true;
+      if(this.previousSprintNumber==2){
+        this.firstSprint = true;
+      }
+      else{
+        this.previous=true;
+      }
       this.sprintFormService.getPreviousSprint(this.teamVal.value,this.previousSprintNumber-1).subscribe((dat: any[])=>{
         data=dat[0];
         // this.sprintNumber=dat[0].sprintNum;
-        console.log(data.sprintNum)
         this.previousSprintNumber=data.sprintNum;
-        console.log("SN "+ this.sprintNumber+" PN "+this.previousSprintNumber)
+        console.log("Previous SN "+ this.sprintNumber+" PN "+this.previousSprintNumber)
         this.sprintReport.patchValue({
           team: data.teamID,
           sprintStart: data.sprintStartdate,
@@ -119,10 +128,12 @@ export class ReportComponent implements OnInit, OnDestroy {
         })
       })
     }
+    //Nextt changes the form elements to the next Sprint Report of the team selected. Activate only when previous has been clicked
     if(callType=='next'){
       if(this.sprintNumber==this.previousSprintNumber+1){
         this.previous=false
         this.fillSprintReport('new');
+        this.previousSprintNumber+=1;
       }
       else{
         this.sprintFormService.getPreviousSprint(this.teamVal.value,this.previousSprintNumber+1).subscribe((dat: any[])=>{
@@ -154,11 +165,13 @@ export class ReportComponent implements OnInit, OnDestroy {
           })
         })
       }
+      console.log("Next"+"SN "+ this.sprintNumber+" PN "+this.previousSprintNumber)
     }
+    //New resets the form for the user to enter a new sprint report of the team selected
     if(callType=='new'){
       this.previous=false;
-      this.previousSprintNumber=this.sprintNumber-1;
       this.sprintReport.reset({team: this.teamVal.value, smemail: this.sprintReport.get('smemail').value})
+      console.log("New"+"SN "+ this.sprintNumber+" PN "+this.previousSprintNumber)
     }
   }
 
@@ -168,7 +181,6 @@ export class ReportComponent implements OnInit, OnDestroy {
       this.reasons = data;
       this.addReasons(this.reasons);
     })
-    console.log(this.reasons)
   }
 
   addReasons(reasons: any[]){
@@ -218,7 +230,13 @@ export class ReportComponent implements OnInit, OnDestroy {
     console.log(this.sprintReport.value)
     var newReport = this.sprintReport.value;
     newReport.sprintNum = this.sprintNumber;
-    this.sprintFormService.saveSprintReport(newReport);
+    this.addSprintReport(newReport);
+  }
+
+  addSprintReport(newReport){
+    this.sprintFormService.saveSprintReport(newReport).subscribe(data=>{
+      console.log(data)
+    })
   }
 
   // Get Requests from form
