@@ -28,4 +28,8 @@ public class AgileTeamController {
 	public AgileTeamEntity addAgileTeam(@RequestBody AgileTeamEntity agileTeamEntity) {
 		return agileTeamService.addAgileTeam(agileTeamEntity);
 	}
+	@GetMapping("/agileteam/project")
+	public List<AgileTeamEntity> getProjectAgileTeams(){
+		return agileTeamService.getAgileTeams();
+}
 }
